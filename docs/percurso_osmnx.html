@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1e08ec36ec29709d1af03097a98e72da {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+<div style="
+    position: fixed; 
+    top: 10px; 
+    right: 10px; 
+    z-index: 1000; 
+    background-color: white; 
+    padding: 12px 16px; 
+    border-radius: 8px; 
+    border: 2px solid #ff6b6b; 
+    font-family: 'Segoe UI', Arial, sans-serif; 
+    font-size: 14px; 
+    font-weight: bold; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    text-align: center;
+">
+    <div style="color: #ff6b6b; font-size: 16px; margin-bottom: 5px;">🍺 Roteiro completo</div>
+    <div>📍 Paradas: 40 bares</div>
+    <div>🚶 Distância total a percorrer: <span style="color: #ff6b6b;">64.63 km</span></div>
+    <div style="font-size: 11px; color: #666; margin-top: 5px;">
+        🟢 Início | 🔴 Fim | 🔵 Demais bares
+    </div>
+</div>
+    
+            <div class="folium-map" id="map_1e08ec36ec29709d1af03097a98e72da" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1e08ec36ec29709d1af03097a98e72da = L.map(
+                "map_1e08ec36ec29709d1af03097a98e72da",
+                {
+                    center: [-21.7819995, -43.2989666],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4b7564f0b6354f64280b9d3259865cfa = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_4b7564f0b6354f64280b9d3259865cfa.addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var marker_9eb453d71ade63c74e51d5a854d21e0e = L.marker(
+                [-21.7819995, -43.2989666],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_f1542b26cda37ab85fd43acaa98bff23 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "play", "iconColor": "white", "markerColor": "green", "prefix": "fa"}
+            );
+            marker_9eb453d71ade63c74e51d5a854d21e0e.setIcon(icon_f1542b26cda37ab85fd43acaa98bff23);
+        
+    
+        var popup_d8a4844a0d68d993360716c952c8624e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2ffab2a029e0eb7d5cde472e1216c4b5 = $(`<div id="html_2ffab2a029e0eb7d5cde472e1216c4b5" style="width: 100.0%; height: 100.0%;"><b>ADEGA BAR</b><br>Parada 1 de 40</div>`)[0];
+                popup_d8a4844a0d68d993360716c952c8624e.setContent(html_2ffab2a029e0eb7d5cde472e1216c4b5);
+            
+        
+
+        marker_9eb453d71ade63c74e51d5a854d21e0e.bindPopup(popup_d8a4844a0d68d993360716c952c8624e)
+        ;
+
+        
+    
+    
+            marker_9eb453d71ade63c74e51d5a854d21e0e.bindTooltip(
+                `<div>
+                     ADEGA BAR
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2d438d7c195de8b57b0298bb594916fb = L.marker(
+                [-21.7739006, -43.309326],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_8225732c8864fa2cdf80f87f27af28fc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2d438d7c195de8b57b0298bb594916fb.setIcon(icon_8225732c8864fa2cdf80f87f27af28fc);
+        
+    
+        var popup_2e2f4794e3bca58e7871ebb0114acfbe = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b1b7057363dd7177a960bf50c2a815d6 = $(`<div id="html_b1b7057363dd7177a960bf50c2a815d6" style="width: 100.0%; height: 100.0%;"><b>RECANTO DOS MANACAS</b><br>Parada 2 de 40</div>`)[0];
+                popup_2e2f4794e3bca58e7871ebb0114acfbe.setContent(html_b1b7057363dd7177a960bf50c2a815d6);
+            
+        
+
+        marker_2d438d7c195de8b57b0298bb594916fb.bindPopup(popup_2e2f4794e3bca58e7871ebb0114acfbe)
+        ;
+
+        
+    
+    
+            marker_2d438d7c195de8b57b0298bb594916fb.bindTooltip(
+                `<div>
+                     RECANTO DOS MANACAS
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0144382a65f2d58aba92d0cd5dd9c449 = L.marker(
+                [-21.7683638, -43.3281789],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_1cd4e89978a08e13ed8cf9aeb945894f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0144382a65f2d58aba92d0cd5dd9c449.setIcon(icon_1cd4e89978a08e13ed8cf9aeb945894f);
+        
+    
+        var popup_d71111dd57b0834a44bbcb88bbc3e710 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f2810985cd2e1bbe125760d18799d60a = $(`<div id="html_f2810985cd2e1bbe125760d18799d60a" style="width: 100.0%; height: 100.0%;"><b>EMPORIO DO SABOR</b><br>Parada 3 de 40</div>`)[0];
+                popup_d71111dd57b0834a44bbcb88bbc3e710.setContent(html_f2810985cd2e1bbe125760d18799d60a);
+            
+        
+
+        marker_0144382a65f2d58aba92d0cd5dd9c449.bindPopup(popup_d71111dd57b0834a44bbcb88bbc3e710)
+        ;
+
+        
+    
+    
+            marker_0144382a65f2d58aba92d0cd5dd9c449.bindTooltip(
+                `<div>
+                     EMPORIO DO SABOR
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_15ff7b93257683100231cebdbe18b0bf = L.marker(
+                [-21.7687003, -43.3436456],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_a2eb196a44b530086d0ad196d0d85864 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_15ff7b93257683100231cebdbe18b0bf.setIcon(icon_a2eb196a44b530086d0ad196d0d85864);
+        
+    
+        var popup_c34bfc9dd93b4ed5bf44f1467547872a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8b0f22229e8fd5c7afcd16dc9633f08e = $(`<div id="html_8b0f22229e8fd5c7afcd16dc9633f08e" style="width: 100.0%; height: 100.0%;"><b>VARANDA RESTO BEER</b><br>Parada 4 de 40</div>`)[0];
+                popup_c34bfc9dd93b4ed5bf44f1467547872a.setContent(html_8b0f22229e8fd5c7afcd16dc9633f08e);
+            
+        
+
+        marker_15ff7b93257683100231cebdbe18b0bf.bindPopup(popup_c34bfc9dd93b4ed5bf44f1467547872a)
+        ;
+
+        
+    
+    
+            marker_15ff7b93257683100231cebdbe18b0bf.bindTooltip(
+                `<div>
+                     VARANDA RESTO BEER
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4168d8d39621ee406c892eb34f8ea287 = L.marker(
+                [-21.764711, -43.3445232],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_e5baad264f00979a4e5b8668584be9a1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_4168d8d39621ee406c892eb34f8ea287.setIcon(icon_e5baad264f00979a4e5b8668584be9a1);
+        
+    
+        var popup_4bba749dfea6ff23cabbfa53ecd09773 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ac37c3a4f13cb1a27a046427950c35bb = $(`<div id="html_ac37c3a4f13cb1a27a046427950c35bb" style="width: 100.0%; height: 100.0%;"><b>PAPPADOG BAR</b><br>Parada 5 de 40</div>`)[0];
+                popup_4bba749dfea6ff23cabbfa53ecd09773.setContent(html_ac37c3a4f13cb1a27a046427950c35bb);
+            
+        
+
+        marker_4168d8d39621ee406c892eb34f8ea287.bindPopup(popup_4bba749dfea6ff23cabbfa53ecd09773)
+        ;
+
+        
+    
+    
+            marker_4168d8d39621ee406c892eb34f8ea287.bindTooltip(
+                `<div>
+                     PAPPADOG BAR
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_58c7880d7dce81d2a4570e0126b88c30 = L.marker(
+                [-21.7632591, -43.3454451],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_c3c037c7a3cdde591404ea84d8620b74 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_58c7880d7dce81d2a4570e0126b88c30.setIcon(icon_c3c037c7a3cdde591404ea84d8620b74);
+        
+    
+        var popup_efc89d36bd5b533501130380d6e04efc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_71b1677a4dc9459d496b544e57233b10 = $(`<div id="html_71b1677a4dc9459d496b544e57233b10" style="width: 100.0%; height: 100.0%;"><b>CAMINHO DA ROCA</b><br>Parada 6 de 40</div>`)[0];
+                popup_efc89d36bd5b533501130380d6e04efc.setContent(html_71b1677a4dc9459d496b544e57233b10);
+            
+        
+
+        marker_58c7880d7dce81d2a4570e0126b88c30.bindPopup(popup_efc89d36bd5b533501130380d6e04efc)
+        ;
+
+        
+    
+    
+            marker_58c7880d7dce81d2a4570e0126b88c30.bindTooltip(
+                `<div>
+                     CAMINHO DA ROCA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_35928e6e5bdd0464f0ac9163b4a5994b = L.marker(
+                [-21.7586111, -43.3472222],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_497068cb70f45bdf42d7f747eba717a5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_35928e6e5bdd0464f0ac9163b4a5994b.setIcon(icon_497068cb70f45bdf42d7f747eba717a5);
+        
+    
+        var popup_ec624ea4ff123415964011905cfca17c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_297298c57ddc0d24c4b98d034f669aa1 = $(`<div id="html_297298c57ddc0d24c4b98d034f669aa1" style="width: 100.0%; height: 100.0%;"><b>BAR DO ABILIO</b><br>Parada 7 de 40</div>`)[0];
+                popup_ec624ea4ff123415964011905cfca17c.setContent(html_297298c57ddc0d24c4b98d034f669aa1);
+            
+        
+
+        marker_35928e6e5bdd0464f0ac9163b4a5994b.bindPopup(popup_ec624ea4ff123415964011905cfca17c)
+        ;
+
+        
+    
+    
+            marker_35928e6e5bdd0464f0ac9163b4a5994b.bindTooltip(
+                `<div>
+                     BAR DO ABILIO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_42e04e2bbb2825fb5be9fe291e34b9d0 = L.marker(
+                [-21.757916, -43.341287],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_91b372b81b6655afccefd9a0bd4174f6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_42e04e2bbb2825fb5be9fe291e34b9d0.setIcon(icon_91b372b81b6655afccefd9a0bd4174f6);
+        
+    
+        var popup_65c10f25d737dcd894d6d47ad0e94a1f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a649506fac8ed090af50fd778dd1de5a = $(`<div id="html_a649506fac8ed090af50fd778dd1de5a" style="width: 100.0%; height: 100.0%;"><b>SUPER LAZIN</b><br>Parada 8 de 40</div>`)[0];
+                popup_65c10f25d737dcd894d6d47ad0e94a1f.setContent(html_a649506fac8ed090af50fd778dd1de5a);
+            
+        
+
+        marker_42e04e2bbb2825fb5be9fe291e34b9d0.bindPopup(popup_65c10f25d737dcd894d6d47ad0e94a1f)
+        ;
+
+        
+    
+    
+            marker_42e04e2bbb2825fb5be9fe291e34b9d0.bindTooltip(
+                `<div>
+                     SUPER LAZIN
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f41222d4aef91fc189098c48596416ff = L.marker(
+                [-21.7554517, -43.3399353],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_e9075f782dd530336188d8acce9c75c0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_f41222d4aef91fc189098c48596416ff.setIcon(icon_e9075f782dd530336188d8acce9c75c0);
+        
+    
+        var popup_ec99e3ac0acdd301195c382ad08dc22e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_dd875543c8a187ff0b29f10887adb27a = $(`<div id="html_dd875543c8a187ff0b29f10887adb27a" style="width: 100.0%; height: 100.0%;"><b>CASARAO BAR</b><br>Parada 9 de 40</div>`)[0];
+                popup_ec99e3ac0acdd301195c382ad08dc22e.setContent(html_dd875543c8a187ff0b29f10887adb27a);
+            
+        
+
+        marker_f41222d4aef91fc189098c48596416ff.bindPopup(popup_ec99e3ac0acdd301195c382ad08dc22e)
+        ;
+
+        
+    
+    
+            marker_f41222d4aef91fc189098c48596416ff.bindTooltip(
+                `<div>
+                     CASARAO BAR
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b9ac02d6cd2350e5a015cbcc301d8cb9 = L.marker(
+                [-21.7541569, -43.3521957],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_f65b7fb761226eaef10a5b01c03ae6fc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_b9ac02d6cd2350e5a015cbcc301d8cb9.setIcon(icon_f65b7fb761226eaef10a5b01c03ae6fc);
+        
+    
+        var popup_f7a22c199b330b72507c640fa9312aec = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d3670c9ed3d652fa27093046f8ee90b8 = $(`<div id="html_d3670c9ed3d652fa27093046f8ee90b8" style="width: 100.0%; height: 100.0%;"><b>BAR BATATA D'MOLA</b><br>Parada 10 de 40</div>`)[0];
+                popup_f7a22c199b330b72507c640fa9312aec.setContent(html_d3670c9ed3d652fa27093046f8ee90b8);
+            
+        
+
+        marker_b9ac02d6cd2350e5a015cbcc301d8cb9.bindPopup(popup_f7a22c199b330b72507c640fa9312aec)
+        ;
+
+        
+    
+    
+            marker_b9ac02d6cd2350e5a015cbcc301d8cb9.bindTooltip(
+                `<div>
+                     BAR BATATA D'MOLA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a93e79bb9e9053919318febb0e0f023c = L.marker(
+                [-21.7534911, -43.3533205],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_0fa1c9917031b3434783cba1a4ca8fed = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_a93e79bb9e9053919318febb0e0f023c.setIcon(icon_0fa1c9917031b3434783cba1a4ca8fed);
+        
+    
+        var popup_f1ec3eb802e4f0e1bc55c1f5d3ac083a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b4a6ac32844b5c9b751929deaea92362 = $(`<div id="html_b4a6ac32844b5c9b751929deaea92362" style="width: 100.0%; height: 100.0%;"><b>BAR DO MARQUIM</b><br>Parada 11 de 40</div>`)[0];
+                popup_f1ec3eb802e4f0e1bc55c1f5d3ac083a.setContent(html_b4a6ac32844b5c9b751929deaea92362);
+            
+        
+
+        marker_a93e79bb9e9053919318febb0e0f023c.bindPopup(popup_f1ec3eb802e4f0e1bc55c1f5d3ac083a)
+        ;
+
+        
+    
+    
+            marker_a93e79bb9e9053919318febb0e0f023c.bindTooltip(
+                `<div>
+                     BAR DO MARQUIM
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_306eed441499c611bd82977db8d082cd = L.marker(
+                [-21.752821, -43.357038],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_17b7632cb95a37c05f1282cbe48c3a24 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_306eed441499c611bd82977db8d082cd.setIcon(icon_17b7632cb95a37c05f1282cbe48c3a24);
+        
+    
+        var popup_7016ed2d9c10a063c2ee3e1feec7027f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4759c6d0e9c120618f4f546ad4d75093 = $(`<div id="html_4759c6d0e9c120618f4f546ad4d75093" style="width: 100.0%; height: 100.0%;"><b>REZA FORTE</b><br>Parada 12 de 40</div>`)[0];
+                popup_7016ed2d9c10a063c2ee3e1feec7027f.setContent(html_4759c6d0e9c120618f4f546ad4d75093);
+            
+        
+
+        marker_306eed441499c611bd82977db8d082cd.bindPopup(popup_7016ed2d9c10a063c2ee3e1feec7027f)
+        ;
+
+        
+    
+    
+            marker_306eed441499c611bd82977db8d082cd.bindTooltip(
+                `<div>
+                     REZA FORTE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3795ecac12ae5cec584876a0937e8b6b = L.marker(
+                [-21.752784, -43.358278],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_3d8d7eeda335fc9f49540d6c6c164328 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_3795ecac12ae5cec584876a0937e8b6b.setIcon(icon_3d8d7eeda335fc9f49540d6c6c164328);
+        
+    
+        var popup_24a47d0312aee4ad86ab1f2c23ac95d9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_691f76f9d9dd851bdce59fac28d07870 = $(`<div id="html_691f76f9d9dd851bdce59fac28d07870" style="width: 100.0%; height: 100.0%;"><b>INFORMAL BAR & RESTAURANTE</b><br>Parada 13 de 40</div>`)[0];
+                popup_24a47d0312aee4ad86ab1f2c23ac95d9.setContent(html_691f76f9d9dd851bdce59fac28d07870);
+            
+        
+
+        marker_3795ecac12ae5cec584876a0937e8b6b.bindPopup(popup_24a47d0312aee4ad86ab1f2c23ac95d9)
+        ;
+
+        
+    
+    
+            marker_3795ecac12ae5cec584876a0937e8b6b.bindTooltip(
+                `<div>
+                     INFORMAL BAR & RESTAURANTE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_995b3571fa8ad1d5f7c01792d7553380 = L.marker(
+                [-21.7536439, -43.3586749],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_0445cf39d3b3e7dafbdd8515a29fbb1e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_995b3571fa8ad1d5f7c01792d7553380.setIcon(icon_0445cf39d3b3e7dafbdd8515a29fbb1e);
+        
+    
+        var popup_adecc6cdc33039600deac39762683ac8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_68cd39ad49d259bb58eed53d16833790 = $(`<div id="html_68cd39ad49d259bb58eed53d16833790" style="width: 100.0%; height: 100.0%;"><b>BIROSCA BAR E RESTAURANTE</b><br>Parada 14 de 40</div>`)[0];
+                popup_adecc6cdc33039600deac39762683ac8.setContent(html_68cd39ad49d259bb58eed53d16833790);
+            
+        
+
+        marker_995b3571fa8ad1d5f7c01792d7553380.bindPopup(popup_adecc6cdc33039600deac39762683ac8)
+        ;
+
+        
+    
+    
+            marker_995b3571fa8ad1d5f7c01792d7553380.bindTooltip(
+                `<div>
+                     BIROSCA BAR E RESTAURANTE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_55e1bdfe5f6ac0ee44868f44943e0734 = L.marker(
+                [-21.7498068, -43.3680499],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_98df6a9845dc0622c3dcf84b6e25cef5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_55e1bdfe5f6ac0ee44868f44943e0734.setIcon(icon_98df6a9845dc0622c3dcf84b6e25cef5);
+        
+    
+        var popup_cc202fa18fb45ab340e1edd2023b3254 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7584cd9ea493debfbde3d701a7b9b05e = $(`<div id="html_7584cd9ea493debfbde3d701a7b9b05e" style="width: 100.0%; height: 100.0%;"><b>BAR DO PASSARINHO</b><br>Parada 15 de 40</div>`)[0];
+                popup_cc202fa18fb45ab340e1edd2023b3254.setContent(html_7584cd9ea493debfbde3d701a7b9b05e);
+            
+        
+
+        marker_55e1bdfe5f6ac0ee44868f44943e0734.bindPopup(popup_cc202fa18fb45ab340e1edd2023b3254)
+        ;
+
+        
+    
+    
+            marker_55e1bdfe5f6ac0ee44868f44943e0734.bindTooltip(
+                `<div>
+                     BAR DO PASSARINHO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f55d62a57889f88a8ec4902231be4204 = L.marker(
+                [-21.755112, -43.37624],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_1644ca5d68b5921ac00a19abec8e7c60 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_f55d62a57889f88a8ec4902231be4204.setIcon(icon_1644ca5d68b5921ac00a19abec8e7c60);
+        
+    
+        var popup_15f2f5673232a18e04c23924b40ba470 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_93c880f7c501504418d0323d3a773078 = $(`<div id="html_93c880f7c501504418d0323d3a773078" style="width: 100.0%; height: 100.0%;"><b>ZAKAS GASTRO BEER</b><br>Parada 16 de 40</div>`)[0];
+                popup_15f2f5673232a18e04c23924b40ba470.setContent(html_93c880f7c501504418d0323d3a773078);
+            
+        
+
+        marker_f55d62a57889f88a8ec4902231be4204.bindPopup(popup_15f2f5673232a18e04c23924b40ba470)
+        ;
+
+        
+    
+    
+            marker_f55d62a57889f88a8ec4902231be4204.bindTooltip(
+                `<div>
+                     ZAKAS GASTRO BEER
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_57df094efc76ab2ad26cde8e3cd684a3 = L.marker(
+                [-21.766567, -43.3723106],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_1b20b3b1ef9f63042281195099c79fc5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_57df094efc76ab2ad26cde8e3cd684a3.setIcon(icon_1b20b3b1ef9f63042281195099c79fc5);
+        
+    
+        var popup_13be8133689920c2b4f1faab453fd36c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_753c4f7b698fd59de2a169afd7a69399 = $(`<div id="html_753c4f7b698fd59de2a169afd7a69399" style="width: 100.0%; height: 100.0%;"><b>BAR DO ANTONIO</b><br>Parada 17 de 40</div>`)[0];
+                popup_13be8133689920c2b4f1faab453fd36c.setContent(html_753c4f7b698fd59de2a169afd7a69399);
+            
+        
+
+        marker_57df094efc76ab2ad26cde8e3cd684a3.bindPopup(popup_13be8133689920c2b4f1faab453fd36c)
+        ;
+
+        
+    
+    
+            marker_57df094efc76ab2ad26cde8e3cd684a3.bindTooltip(
+                `<div>
+                     BAR DO ANTONIO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_74b1c6cf890257c055fac436f4408e4d = L.marker(
+                [-21.7672931, -43.3688659],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_c4f918e8226051aa702c4327d2335a5b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_74b1c6cf890257c055fac436f4408e4d.setIcon(icon_c4f918e8226051aa702c4327d2335a5b);
+        
+    
+        var popup_2aca730c4ca831b1bf697f087f828627 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_80d4330fbc0085813a0474083d63afe4 = $(`<div id="html_80d4330fbc0085813a0474083d63afe4" style="width: 100.0%; height: 100.0%;"><b>BAR DO JORGE</b><br>Parada 18 de 40</div>`)[0];
+                popup_2aca730c4ca831b1bf697f087f828627.setContent(html_80d4330fbc0085813a0474083d63afe4);
+            
+        
+
+        marker_74b1c6cf890257c055fac436f4408e4d.bindPopup(popup_2aca730c4ca831b1bf697f087f828627)
+        ;
+
+        
+    
+    
+            marker_74b1c6cf890257c055fac436f4408e4d.bindTooltip(
+                `<div>
+                     BAR DO JORGE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e6a91daf0a7ac04bf88ff853a2c6c50d = L.marker(
+                [-21.7717784, -43.3752646],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_3c1f00e57d4efa1249ee99f7efc76fac = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_e6a91daf0a7ac04bf88ff853a2c6c50d.setIcon(icon_3c1f00e57d4efa1249ee99f7efc76fac);
+        
+    
+        var popup_880907e2d3a4ff1e40672f7c36139a29 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_09074570efd42ecc151d6c7e336ed077 = $(`<div id="html_09074570efd42ecc151d6c7e336ed077" style="width: 100.0%; height: 100.0%;"><b>BUTECO DO PRINCIPE</b><br>Parada 19 de 40</div>`)[0];
+                popup_880907e2d3a4ff1e40672f7c36139a29.setContent(html_09074570efd42ecc151d6c7e336ed077);
+            
+        
+
+        marker_e6a91daf0a7ac04bf88ff853a2c6c50d.bindPopup(popup_880907e2d3a4ff1e40672f7c36139a29)
+        ;
+
+        
+    
+    
+            marker_e6a91daf0a7ac04bf88ff853a2c6c50d.bindTooltip(
+                `<div>
+                     BUTECO DO PRINCIPE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e6b94494ab1a00c1ef97467e1b2f8ee5 = L.marker(
+                [-21.7756168, -43.378489],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_a59afb694f9027a8f7125c44b9cd5406 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_e6b94494ab1a00c1ef97467e1b2f8ee5.setIcon(icon_a59afb694f9027a8f7125c44b9cd5406);
+        
+    
+        var popup_2b223dc3791a9d5eff524aad719e68e8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2c7114d2d2bfc5a5c625e91f561afd87 = $(`<div id="html_2c7114d2d2bfc5a5c625e91f561afd87" style="width: 100.0%; height: 100.0%;"><b>BAR DO BENE</b><br>Parada 20 de 40</div>`)[0];
+                popup_2b223dc3791a9d5eff524aad719e68e8.setContent(html_2c7114d2d2bfc5a5c625e91f561afd87);
+            
+        
+
+        marker_e6b94494ab1a00c1ef97467e1b2f8ee5.bindPopup(popup_2b223dc3791a9d5eff524aad719e68e8)
+        ;
+
+        
+    
+    
+            marker_e6b94494ab1a00c1ef97467e1b2f8ee5.bindTooltip(
+                `<div>
+                     BAR DO BENE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9dd5a5c6e28d93bd90c496988e48ee7d = L.marker(
+                [-21.7889633, -43.3784154],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_7130189700590d4553db6cd025d0da0b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_9dd5a5c6e28d93bd90c496988e48ee7d.setIcon(icon_7130189700590d4553db6cd025d0da0b);
+        
+    
+        var popup_237e0e0337b418a52b6b46f019e96237 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_53045102ceb86b484ed3625e9c7e07be = $(`<div id="html_53045102ceb86b484ed3625e9c7e07be" style="width: 100.0%; height: 100.0%;"><b>PETISQUEIRA</b><br>Parada 21 de 40</div>`)[0];
+                popup_237e0e0337b418a52b6b46f019e96237.setContent(html_53045102ceb86b484ed3625e9c7e07be);
+            
+        
+
+        marker_9dd5a5c6e28d93bd90c496988e48ee7d.bindPopup(popup_237e0e0337b418a52b6b46f019e96237)
+        ;
+
+        
+    
+    
+            marker_9dd5a5c6e28d93bd90c496988e48ee7d.bindTooltip(
+                `<div>
+                     PETISQUEIRA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_11b964033258a4de15768012a91ca9ae = L.marker(
+                [-21.789056, -43.3810512],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_5ced5eaa1b6bca72b42c974a12dbc811 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_11b964033258a4de15768012a91ca9ae.setIcon(icon_5ced5eaa1b6bca72b42c974a12dbc811);
+        
+    
+        var popup_84b0afbc179370c7eb3813876777fe27 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_779352239684e3b268bb7eafa8833482 = $(`<div id="html_779352239684e3b268bb7eafa8833482" style="width: 100.0%; height: 100.0%;"><b>DON JUAN GASTRONOMIA E EVENTOS</b><br>Parada 22 de 40</div>`)[0];
+                popup_84b0afbc179370c7eb3813876777fe27.setContent(html_779352239684e3b268bb7eafa8833482);
+            
+        
+
+        marker_11b964033258a4de15768012a91ca9ae.bindPopup(popup_84b0afbc179370c7eb3813876777fe27)
+        ;
+
+        
+    
+    
+            marker_11b964033258a4de15768012a91ca9ae.bindTooltip(
+                `<div>
+                     DON JUAN GASTRONOMIA E EVENTOS
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cbd23a6da2a942bb7060512501ea74e4 = L.marker(
+                [-21.7882238, -43.3831797],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_665ba5e5a08f4efb51034604d6862308 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_cbd23a6da2a942bb7060512501ea74e4.setIcon(icon_665ba5e5a08f4efb51034604d6862308);
+        
+    
+        var popup_3b20cada32baff644127c5d4751b06d9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_78d85285d62a2cf9898bec7ef1f2e416 = $(`<div id="html_78d85285d62a2cf9898bec7ef1f2e416" style="width: 100.0%; height: 100.0%;"><b>BAR DO TIAO</b><br>Parada 23 de 40</div>`)[0];
+                popup_3b20cada32baff644127c5d4751b06d9.setContent(html_78d85285d62a2cf9898bec7ef1f2e416);
+            
+        
+
+        marker_cbd23a6da2a942bb7060512501ea74e4.bindPopup(popup_3b20cada32baff644127c5d4751b06d9)
+        ;
+
+        
+    
+    
+            marker_cbd23a6da2a942bb7060512501ea74e4.bindTooltip(
+                `<div>
+                     BAR DO TIAO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fab739956e967fbd3df4323921356ace = L.marker(
+                [-21.78997, -43.3533213],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_efd31c5b107f7463ccf73a7b70e31ff3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_fab739956e967fbd3df4323921356ace.setIcon(icon_efd31c5b107f7463ccf73a7b70e31ff3);
+        
+    
+        var popup_9ffea3d858bbb6ffa41c497bae9dbd12 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8111447eb75504cc6f8582c8bfa67d3b = $(`<div id="html_8111447eb75504cc6f8582c8bfa67d3b" style="width: 100.0%; height: 100.0%;"><b>BAR TORRESMO</b><br>Parada 24 de 40</div>`)[0];
+                popup_9ffea3d858bbb6ffa41c497bae9dbd12.setContent(html_8111447eb75504cc6f8582c8bfa67d3b);
+            
+        
+
+        marker_fab739956e967fbd3df4323921356ace.bindPopup(popup_9ffea3d858bbb6ffa41c497bae9dbd12)
+        ;
+
+        
+    
+    
+            marker_fab739956e967fbd3df4323921356ace.bindTooltip(
+                `<div>
+                     BAR TORRESMO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c3c7e1b156a65f0abbb94d40a6c4660b = L.marker(
+                [-21.7854816, -43.347486],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_c2c5c4842bca489debc4f27877e0988c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c3c7e1b156a65f0abbb94d40a6c4660b.setIcon(icon_c2c5c4842bca489debc4f27877e0988c);
+        
+    
+        var popup_f933268b2ca9bef4ea777e630014d3f3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c226630b5611b594874bc0cf57590eae = $(`<div id="html_c226630b5611b594874bc0cf57590eae" style="width: 100.0%; height: 100.0%;"><b>IBITIBAR</b><br>Parada 25 de 40</div>`)[0];
+                popup_f933268b2ca9bef4ea777e630014d3f3.setContent(html_c226630b5611b594874bc0cf57590eae);
+            
+        
+
+        marker_c3c7e1b156a65f0abbb94d40a6c4660b.bindPopup(popup_f933268b2ca9bef4ea777e630014d3f3)
+        ;
+
+        
+    
+    
+            marker_c3c7e1b156a65f0abbb94d40a6c4660b.bindTooltip(
+                `<div>
+                     IBITIBAR
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5f25991f1f23d717429a219bc931d004 = L.marker(
+                [-21.7867333, -43.34463],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_e2fba7f2f068b730f5697154390c96ac = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_5f25991f1f23d717429a219bc931d004.setIcon(icon_e2fba7f2f068b730f5697154390c96ac);
+        
+    
+        var popup_4a79a9ab05a547c9e47bcb2b6df92c10 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_68ecefff3ed976842af3384b0be93760 = $(`<div id="html_68ecefff3ed976842af3384b0be93760" style="width: 100.0%; height: 100.0%;"><b>BAR SANTA MODERACAO</b><br>Parada 26 de 40</div>`)[0];
+                popup_4a79a9ab05a547c9e47bcb2b6df92c10.setContent(html_68ecefff3ed976842af3384b0be93760);
+            
+        
+
+        marker_5f25991f1f23d717429a219bc931d004.bindPopup(popup_4a79a9ab05a547c9e47bcb2b6df92c10)
+        ;
+
+        
+    
+    
+            marker_5f25991f1f23d717429a219bc931d004.bindTooltip(
+                `<div>
+                     BAR SANTA MODERACAO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4fc07ae474fad45ba2a37381f14ae853 = L.marker(
+                [-21.7885709, -43.3428745],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_fadfe86cf08391cbdde6b90368bffef7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_4fc07ae474fad45ba2a37381f14ae853.setIcon(icon_fadfe86cf08391cbdde6b90368bffef7);
+        
+    
+        var popup_495dd94538b59b22f23adcc5c211b2c8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_132e53debf72398fc5383a3df6874fb1 = $(`<div id="html_132e53debf72398fc5383a3df6874fb1" style="width: 100.0%; height: 100.0%;"><b>PAO MOIADO BAR</b><br>Parada 27 de 40</div>`)[0];
+                popup_495dd94538b59b22f23adcc5c211b2c8.setContent(html_132e53debf72398fc5383a3df6874fb1);
+            
+        
+
+        marker_4fc07ae474fad45ba2a37381f14ae853.bindPopup(popup_495dd94538b59b22f23adcc5c211b2c8)
+        ;
+
+        
+    
+    
+            marker_4fc07ae474fad45ba2a37381f14ae853.bindTooltip(
+                `<div>
+                     PAO MOIADO BAR
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0acff97f32e047a941360f1c0e9cd4fa = L.marker(
+                [-21.7777764, -43.3483018],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_5b0d5b9bba7369c1e3e558c5d96f8de4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0acff97f32e047a941360f1c0e9cd4fa.setIcon(icon_5b0d5b9bba7369c1e3e558c5d96f8de4);
+        
+    
+        var popup_6843ffc12ba78a87c0a81d36ffac5ea2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ef084a9867e361907f1394f0e05b2eec = $(`<div id="html_ef084a9867e361907f1394f0e05b2eec" style="width: 100.0%; height: 100.0%;"><b>DIRCEUS PUB</b><br>Parada 28 de 40</div>`)[0];
+                popup_6843ffc12ba78a87c0a81d36ffac5ea2.setContent(html_ef084a9867e361907f1394f0e05b2eec);
+            
+        
+
+        marker_0acff97f32e047a941360f1c0e9cd4fa.bindPopup(popup_6843ffc12ba78a87c0a81d36ffac5ea2)
+        ;
+
+        
+    
+    
+            marker_0acff97f32e047a941360f1c0e9cd4fa.bindTooltip(
+                `<div>
+                     DIRCEUS PUB
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_92e5b041a3ee98c0c1d9248c32a47f48 = L.marker(
+                [-21.7753465, -43.3491994],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_a6b8e6ed7f0ece631208eeaaa3aeac2e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_92e5b041a3ee98c0c1d9248c32a47f48.setIcon(icon_a6b8e6ed7f0ece631208eeaaa3aeac2e);
+        
+    
+        var popup_eeebadf0715188dc021f94d56547c064 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_71b40a74ffe64863c1317739f6a256b0 = $(`<div id="html_71b40a74ffe64863c1317739f6a256b0" style="width: 100.0%; height: 100.0%;"><b>ESPETINHO DA VILLA</b><br>Parada 29 de 40</div>`)[0];
+                popup_eeebadf0715188dc021f94d56547c064.setContent(html_71b40a74ffe64863c1317739f6a256b0);
+            
+        
+
+        marker_92e5b041a3ee98c0c1d9248c32a47f48.bindPopup(popup_eeebadf0715188dc021f94d56547c064)
+        ;
+
+        
+    
+    
+            marker_92e5b041a3ee98c0c1d9248c32a47f48.bindTooltip(
+                `<div>
+                     ESPETINHO DA VILLA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f41ea08cf40aabe7a3a9382f4e540846 = L.marker(
+                [-21.7745557, -43.3501901],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_114747318fe83a80af283999b064aafb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_f41ea08cf40aabe7a3a9382f4e540846.setIcon(icon_114747318fe83a80af283999b064aafb);
+        
+    
+        var popup_c01ceaf714c58bd73436fefb997365ba = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6a420e8dc5181cdc29b4c4193335aa23 = $(`<div id="html_6a420e8dc5181cdc29b4c4193335aa23" style="width: 100.0%; height: 100.0%;"><b>BUTIQUIM DA FABRICA</b><br>Parada 30 de 40</div>`)[0];
+                popup_c01ceaf714c58bd73436fefb997365ba.setContent(html_6a420e8dc5181cdc29b4c4193335aa23);
+            
+        
+
+        marker_f41ea08cf40aabe7a3a9382f4e540846.bindPopup(popup_c01ceaf714c58bd73436fefb997365ba)
+        ;
+
+        
+    
+    
+            marker_f41ea08cf40aabe7a3a9382f4e540846.bindTooltip(
+                `<div>
+                     BUTIQUIM DA FABRICA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6968a03150e2465e45756c0b9f903d85 = L.marker(
+                [-21.7652098, -43.3536869],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_0406752bc5a9875edc66ede21514695a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6968a03150e2465e45756c0b9f903d85.setIcon(icon_0406752bc5a9875edc66ede21514695a);
+        
+    
+        var popup_a0ecef35889a6e75160516bae793f67e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ae787a233d087faf723c3634b71e0fb6 = $(`<div id="html_ae787a233d087faf723c3634b71e0fb6" style="width: 100.0%; height: 100.0%;"><b>BAR DU CHICO</b><br>Parada 31 de 40</div>`)[0];
+                popup_a0ecef35889a6e75160516bae793f67e.setContent(html_ae787a233d087faf723c3634b71e0fb6);
+            
+        
+
+        marker_6968a03150e2465e45756c0b9f903d85.bindPopup(popup_a0ecef35889a6e75160516bae793f67e)
+        ;
+
+        
+    
+    
+            marker_6968a03150e2465e45756c0b9f903d85.bindTooltip(
+                `<div>
+                     BAR DU CHICO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dfc715674807bd45311c29d8199e5b7e = L.marker(
+                [-21.764565, -43.3521346],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_121738f7afb736a72e6b00ed25462d45 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_dfc715674807bd45311c29d8199e5b7e.setIcon(icon_121738f7afb736a72e6b00ed25462d45);
+        
+    
+        var popup_8a255edd71d53cb187d15b8d6bcd22eb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_67b0103a1727780084855a6db6964913 = $(`<div id="html_67b0103a1727780084855a6db6964913" style="width: 100.0%; height: 100.0%;"><b>CARLOTA</b><br>Parada 32 de 40</div>`)[0];
+                popup_8a255edd71d53cb187d15b8d6bcd22eb.setContent(html_67b0103a1727780084855a6db6964913);
+            
+        
+
+        marker_dfc715674807bd45311c29d8199e5b7e.bindPopup(popup_8a255edd71d53cb187d15b8d6bcd22eb)
+        ;
+
+        
+    
+    
+            marker_dfc715674807bd45311c29d8199e5b7e.bindTooltip(
+                `<div>
+                     CARLOTA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d7c7ee57b5ee33c31582d57e34c644ef = L.marker(
+                [-21.7418419, -43.3494793],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_6fe6d2654baee11c861fd419cafd7bbb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_d7c7ee57b5ee33c31582d57e34c644ef.setIcon(icon_6fe6d2654baee11c861fd419cafd7bbb);
+        
+    
+        var popup_ca36c949e23c5668258516c32f10671c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7c817b7f9d6f6cf4e0ab3da9ba629fdd = $(`<div id="html_7c817b7f9d6f6cf4e0ab3da9ba629fdd" style="width: 100.0%; height: 100.0%;"><b>BAR DU BUNECO</b><br>Parada 33 de 40</div>`)[0];
+                popup_ca36c949e23c5668258516c32f10671c.setContent(html_7c817b7f9d6f6cf4e0ab3da9ba629fdd);
+            
+        
+
+        marker_d7c7ee57b5ee33c31582d57e34c644ef.bindPopup(popup_ca36c949e23c5668258516c32f10671c)
+        ;
+
+        
+    
+    
+            marker_d7c7ee57b5ee33c31582d57e34c644ef.bindTooltip(
+                `<div>
+                     BAR DU BUNECO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b38f7131935f0f581cef810eecc811f3 = L.marker(
+                [-21.7416711, -43.3549644],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_ae1979b8eea906192cd9286c77b67a6f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_b38f7131935f0f581cef810eecc811f3.setIcon(icon_ae1979b8eea906192cd9286c77b67a6f);
+        
+    
+        var popup_ad0f50645ab42da88e033fca844919ca = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c413dbdcc91d2126aa747f77262eeafc = $(`<div id="html_c413dbdcc91d2126aa747f77262eeafc" style="width: 100.0%; height: 100.0%;"><b>LERO LERO</b><br>Parada 34 de 40</div>`)[0];
+                popup_ad0f50645ab42da88e033fca844919ca.setContent(html_c413dbdcc91d2126aa747f77262eeafc);
+            
+        
+
+        marker_b38f7131935f0f581cef810eecc811f3.bindPopup(popup_ad0f50645ab42da88e033fca844919ca)
+        ;
+
+        
+    
+    
+            marker_b38f7131935f0f581cef810eecc811f3.bindTooltip(
+                `<div>
+                     LERO LERO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_63b042855d5d9117d0274fc9ff93030b = L.marker(
+                [-21.7365987, -43.3609957],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_f777e3cb9eb99565091bf37887e97df4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_63b042855d5d9117d0274fc9ff93030b.setIcon(icon_f777e3cb9eb99565091bf37887e97df4);
+        
+    
+        var popup_0be05bc80d534880e6b86067d59ed452 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bfaf521cc516e69180f9b6c3afeffa76 = $(`<div id="html_bfaf521cc516e69180f9b6c3afeffa76" style="width: 100.0%; height: 100.0%;"><b>BAR DIAS</b><br>Parada 35 de 40</div>`)[0];
+                popup_0be05bc80d534880e6b86067d59ed452.setContent(html_bfaf521cc516e69180f9b6c3afeffa76);
+            
+        
+
+        marker_63b042855d5d9117d0274fc9ff93030b.bindPopup(popup_0be05bc80d534880e6b86067d59ed452)
+        ;
+
+        
+    
+    
+            marker_63b042855d5d9117d0274fc9ff93030b.bindTooltip(
+                `<div>
+                     BAR DIAS
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f22477d121bb9a28737ef372bcde4168 = L.marker(
+                [-21.7319617, -43.3568702],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_b7b0ec5af4fbc829656ee03b12f26848 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_f22477d121bb9a28737ef372bcde4168.setIcon(icon_b7b0ec5af4fbc829656ee03b12f26848);
+        
+    
+        var popup_3c5113b3b46985819705bf5b1022dc5a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_975c389df218d5cb03e9505b19fe02cc = $(`<div id="html_975c389df218d5cb03e9505b19fe02cc" style="width: 100.0%; height: 100.0%;"><b>BUDEGA DO PAPAI</b><br>Parada 36 de 40</div>`)[0];
+                popup_3c5113b3b46985819705bf5b1022dc5a.setContent(html_975c389df218d5cb03e9505b19fe02cc);
+            
+        
+
+        marker_f22477d121bb9a28737ef372bcde4168.bindPopup(popup_3c5113b3b46985819705bf5b1022dc5a)
+        ;
+
+        
+    
+    
+            marker_f22477d121bb9a28737ef372bcde4168.bindTooltip(
+                `<div>
+                     BUDEGA DO PAPAI
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1b1fcb624f9b23750759c94731d65f19 = L.marker(
+                [-21.7216065, -43.3546633],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_ac9f2337546b7e38ea3a627a584e9184 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1b1fcb624f9b23750759c94731d65f19.setIcon(icon_ac9f2337546b7e38ea3a627a584e9184);
+        
+    
+        var popup_e3f776bdfb8643bebb86519a0f0f0ce3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_659c7d46266909f4ec478ffd7ed723a1 = $(`<div id="html_659c7d46266909f4ec478ffd7ed723a1" style="width: 100.0%; height: 100.0%;"><b>COMPADRE GRILL COSTELARIA</b><br>Parada 37 de 40</div>`)[0];
+                popup_e3f776bdfb8643bebb86519a0f0f0ce3.setContent(html_659c7d46266909f4ec478ffd7ed723a1);
+            
+        
+
+        marker_1b1fcb624f9b23750759c94731d65f19.bindPopup(popup_e3f776bdfb8643bebb86519a0f0f0ce3)
+        ;
+
+        
+    
+    
+            marker_1b1fcb624f9b23750759c94731d65f19.bindTooltip(
+                `<div>
+                     COMPADRE GRILL COSTELARIA
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_dd4c00db097a508813008a7353c3105c = L.marker(
+                [-21.6900456, -43.4338592],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_5d0f3af0643aba64dcfa76d6d68f6c39 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_dd4c00db097a508813008a7353c3105c.setIcon(icon_5d0f3af0643aba64dcfa76d6d68f6c39);
+        
+    
+        var popup_1b5de781fc77f0a463c81c54495bd39c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5276a420f2e2c19e47e996010cfc9679 = $(`<div id="html_5276a420f2e2c19e47e996010cfc9679" style="width: 100.0%; height: 100.0%;"><b>NOSSO BAR JF</b><br>Parada 38 de 40</div>`)[0];
+                popup_1b5de781fc77f0a463c81c54495bd39c.setContent(html_5276a420f2e2c19e47e996010cfc9679);
+            
+        
+
+        marker_dd4c00db097a508813008a7353c3105c.bindPopup(popup_1b5de781fc77f0a463c81c54495bd39c)
+        ;
+
+        
+    
+    
+            marker_dd4c00db097a508813008a7353c3105c.bindTooltip(
+                `<div>
+                     NOSSO BAR JF
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d16ef5d9b3ad4c769226e26893e5a0d8 = L.marker(
+                [-21.6885565, -43.4341042],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_fb5ea1c5470848c9ab991880376e56a6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_d16ef5d9b3ad4c769226e26893e5a0d8.setIcon(icon_fb5ea1c5470848c9ab991880376e56a6);
+        
+    
+        var popup_c01474e8506386582ca0b737e63d9cef = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fe284bac9adf679d5102b0c3252340d7 = $(`<div id="html_fe284bac9adf679d5102b0c3252340d7" style="width: 100.0%; height: 100.0%;"><b>COLISEUM BAR</b><br>Parada 39 de 40</div>`)[0];
+                popup_c01474e8506386582ca0b737e63d9cef.setContent(html_fe284bac9adf679d5102b0c3252340d7);
+            
+        
+
+        marker_d16ef5d9b3ad4c769226e26893e5a0d8.bindPopup(popup_c01474e8506386582ca0b737e63d9cef)
+        ;
+
+        
+    
+    
+            marker_d16ef5d9b3ad4c769226e26893e5a0d8.bindTooltip(
+                `<div>
+                     COLISEUM BAR
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2d0aec5e51542fa7463d44dce98fdb78 = L.marker(
+                [-21.6853665, -43.4362092],
+                {}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var icon_4049c9480d5f02ba540335d096c274c6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "stop", "iconColor": "white", "markerColor": "red", "prefix": "fa"}
+            );
+            marker_2d0aec5e51542fa7463d44dce98fdb78.setIcon(icon_4049c9480d5f02ba540335d096c274c6);
+        
+    
+        var popup_d2983f4301b39e86406509f74b56a158 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9b569b55f04f991077591ce329738d78 = $(`<div id="html_9b569b55f04f991077591ce329738d78" style="width: 100.0%; height: 100.0%;"><b>BAR DO BREJO</b><br>Parada 40 de 40</div>`)[0];
+                popup_d2983f4301b39e86406509f74b56a158.setContent(html_9b569b55f04f991077591ce329738d78);
+            
+        
+
+        marker_2d0aec5e51542fa7463d44dce98fdb78.bindPopup(popup_d2983f4301b39e86406509f74b56a158)
+        ;
+
+        
+    
+    
+            marker_2d0aec5e51542fa7463d44dce98fdb78.bindTooltip(
+                `<div>
+                     BAR DO BREJO
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_e4d0458de634b6afe280d6383fe3a1ac = L.polyline(
+                [[-21.7823663, -43.2992855], [-21.7806628, -43.2983243], [-21.7775233, -43.2971951], [-21.7764747, -43.2958914], [-21.776415, -43.2957469], [-21.7758433, -43.2945074], [-21.77548, -43.2941921], [-21.7753758, -43.2941227], [-21.7749269, -43.2938307], [-21.7748098, -43.2939662], [-21.7751528, -43.294392], [-21.7735286, -43.2962179], [-21.7711591, -43.2977233], [-21.7710314, -43.2978688], [-21.7709947, -43.2980335], [-21.7710185, -43.2983124], [-21.7687522, -43.3013612], [-21.768891, -43.3018026], [-21.7703798, -43.3078949], [-21.770377, -43.3081182], [-21.770399, -43.3082503], [-21.7705349, -43.3084173], [-21.771586, -43.3093366], [-21.7733602, -43.3106738], [-21.7740601, -43.3098751], [-21.7738347, -43.30935], [-21.7740601, -43.3098751], [-21.7733602, -43.3106738], [-21.7734536, -43.3114897], [-21.7732355, -43.3119867], [-21.7731483, -43.3120121], [-21.772489, -43.3115548], [-21.7722006, -43.3120825], [-21.7719123, -43.312566], [-21.7716333, -43.3130696], [-21.7712597, -43.3140613], [-21.7707074, -43.3154916], [-21.7705822, -43.3157719], [-21.7704418, -43.316029], [-21.7702995, -43.3160844], [-21.7695622, -43.3170319], [-21.7691882, -43.3221376], [-21.7694065, -43.3230502], [-21.7693656, -43.3232265], [-21.7694343, -43.323252], [-21.7697884, -43.323742], [-21.7693301, -43.3246184], [-21.7693478, -43.3253813], [-21.7688275, -43.3265445], [-21.768343, -43.3276206], [-21.7681275, -43.3285485], [-21.7678609, -43.3294044], [-21.767954, -43.3294367], [-21.7677308, -43.3305766], [-21.7676714, -43.3303436], [-21.7656053, -43.3309154], [-21.7663185, -43.3331812], [-21.7658517, -43.334961], [-21.7654312, -43.3348326], [-21.7648816, -43.3346414], [-21.7648585, -43.334726], [-21.7657443, -43.335076], [-21.7681845, -43.3366415], [-21.7679622, -43.337257], [-21.7665997, -43.3368449], [-21.7661452, -43.336786], [-21.765325, -43.3379028], [-21.7652694, -43.3384079], [-21.7649155, -43.3389161], [-21.7647133, -43.338962], [-21.7643798, -43.3386055], [-21.7641218, -43.3389026], [-21.7639846, -43.3390606], [-21.7632496, -43.3398597], [-21.7635133, -43.3403744], [-21.7637017, -43.3411832], [-21.7643384, -43.3439168], [-21.7658775, -43.3434747], [-21.7668565, -43.3431933], [-21.7675786, -43.3429858], [-21.7681058, -43.3428342], [-21.7685463, -43.3427076], [-21.7687234, -43.3435072], [-21.7684043, -43.3435936], [-21.768289, -43.3436247], [-21.7679488, -43.3437168], [-21.7677579, -43.3437693], [-21.767048, -43.3439631], [-21.7660711, -43.3442298], [-21.7645105, -43.3446557], [-21.7632752, -43.344993], [-21.7634341, -43.3456573], [-21.7632899, -43.3459034], [-21.7623815, -43.3436066], [-21.7623282, -43.343412], [-21.7621561, -43.3433596], [-21.7618379, -43.3434547], [-21.7614747, -43.3435263], [-21.760019, -43.3439364], [-21.7591946, -43.3441606], [-21.7590881, -43.3442782], [-21.7582321, -43.3452869], [-21.7587725, -43.3474402], [-21.7596552, -43.3472038], [-21.7598178, -43.3469683], [-21.7590881, -43.3442782], [-21.7582321, -43.3452869], [-21.7578235, -43.3457922], [-21.7558547, -43.3454889], [-21.755808, -43.3454871], [-21.7555465, -43.3454907], [-21.7553581, -43.3453898], [-21.7548551, -43.3448892], [-21.754531, -43.3446043], [-21.7543378, -43.3437548], [-21.7559447, -43.3432837], [-21.7565971, -43.3420675], [-21.7566401, -43.3419737], [-21.7568661, -43.3415777], [-21.7576895, -43.341141], [-21.7580573, -43.3425561], [-21.7578081, -43.3426249], [-21.7568661, -43.3415777], [-21.755922, -43.3406131], [-21.7558377, -43.340519], [-21.755587, -43.3398656], [-21.7558377, -43.340519], [-21.7566401, -43.3419737], [-21.7565971, -43.3420675], [-21.7559447, -43.3432837], [-21.755801, -43.3438077], [-21.7548551, -43.3448892], [-21.7537393, -43.3462308], [-21.7540325, -43.3468802], [-21.7543856, -43.3476338], [-21.7545163, -43.3479263], [-21.754529, -43.3479535], [-21.7550161, -43.3491523], [-21.7545153, -43.3499144], [-21.7541591, -43.3503214], [-21.753315, -43.351337], [-21.7534342, -43.3515979], [-21.7534837, -43.3516379], [-21.7535715, -43.3517523], [-21.7536974, -43.352023], [-21.7540321, -43.3521357], [-21.7546147, -43.3518336], [-21.7547477, -43.3514547], [-21.7546993, -43.3513035], [-21.7536709, -43.3515867], [-21.7534837, -43.3516379], [-21.7535715, -43.3517523], [-21.7536974, -43.352023], [-21.7537982, -43.3522571], [-21.7541298, -43.3530274], [-21.7533643, -43.3532232], [-21.7530963, -43.3526211], [-21.7537982, -43.3522571], [-21.7541298, -43.3530274], [-21.7546764, -43.3542926], [-21.7539774, -43.3546032], [-21.7530446, -43.3560899], [-21.7529855, -43.3573529], [-21.7532808, -43.3580161], [-21.7537567, -43.3584922], [-21.7534014, -43.3589338], [-21.7528101, -43.3583822], [-21.7532808, -43.3580161], [-21.7537567, -43.3584922], [-21.7543947, -43.3592172], [-21.7544403, -43.3606277], [-21.7544407, -43.3606506], [-21.754299, -43.3608378], [-21.7542029, -43.3609673], [-21.7540417, -43.3610395], [-21.7538863, -43.3610024], [-21.7537526, -43.3609245], [-21.7537336, -43.3609013], [-21.7536841, -43.3609057], [-21.7536716, -43.3609621], [-21.7536871, -43.360982], [-21.7529198, -43.3611198], [-21.753115, -43.3619763], [-21.7532519, -43.362549], [-21.7526515, -43.362726], [-21.7520508, -43.3629008], [-21.7523035, -43.3639237], [-21.752288, -43.3640369], [-21.752296, -43.3642263], [-21.7524862, -43.3646572], [-21.7526459, -43.3652567], [-21.7526221, -43.365515], [-21.7525794, -43.3655484], [-21.7523036, -43.3655069], [-21.7512353, -43.3640108], [-21.7512216, -43.3638787], [-21.7494982, -43.3612391], [-21.7494028, -43.3612561], [-21.7490567, -43.3619236], [-21.7487602, -43.3625058], [-21.7485999, -43.3626152], [-21.7469385, -43.3639671], [-21.7475389, -43.3642223], [-21.7471926, -43.3648795], [-21.7479898, -43.3659363], [-21.7483571, -43.3664482], [-21.7492055, -43.3686185], [-21.7483571, -43.3664482], [-21.7488717, -43.3660167], [-21.7485105, -43.3655125], [-21.7481318, -43.3650082], [-21.7496415, -43.3637556], [-21.7500282, -43.3634287], [-21.7505384, -43.3637449], [-21.7511372, -43.3639474], [-21.7512353, -43.3640108], [-21.7523036, -43.3655069], [-21.7525595, -43.3656976], [-21.752665, -43.3657745], [-21.7528682, -43.3661726], [-21.7529524, -43.3666416], [-21.7532139, -43.368887], [-21.7526808, -43.3710529], [-21.7543185, -43.3735819], [-21.7545479, -43.3739313], [-21.754573, -43.3739657], [-21.75471, -43.3741254], [-21.7552886, -43.3762124], [-21.7553091, -43.3763928], [-21.7553102, -43.3764238], [-21.7553931, -43.3764865], [-21.7555078, -43.3765426], [-21.7557407, -43.3768279], [-21.7560152, -43.3757294], [-21.7563715, -43.3761756], [-21.7619461, -43.3758352], [-21.7630927, -43.3746178], [-21.7648062, -43.3737943], [-21.7656129, -43.3733061], [-21.7657648, -43.37318], [-21.7670879, -43.3719999], [-21.7672493, -43.370752], [-21.7677665, -43.3694248], [-21.7675964, -43.3691556], [-21.7677665, -43.3694248], [-21.7679741, -43.369629], [-21.7685026, -43.3704392], [-21.7688923, -43.3709772], [-21.769314, -43.371558], [-21.7703342, -43.3740405], [-21.7706589, -43.3755557], [-21.7706956, -43.3759492], [-21.7710665, -43.3766502], [-21.7718648, -43.3766546], [-21.7718606, -43.3757578], [-21.7718673, -43.3751574], [-21.7724405, -43.3752245], [-21.7724503, -43.3756512], [-21.7724522, -43.3757823], [-21.7724609, -43.3762936], [-21.7724609, -43.3764298], [-21.7726088, -43.3763384], [-21.7738126, -43.3760268], [-21.7740208, -43.3766639], [-21.7745253, -43.3764965], [-21.7747451, -43.3772206], [-21.7752326, -43.3770932], [-21.7756218, -43.3783257], [-21.7751259, -43.3785739], [-21.7746516, -43.3788078], [-21.7740887, -43.3790714], [-21.7735494, -43.3793443], [-21.772819, -43.3796688], [-21.7729386, -43.3801228], [-21.7733284, -43.3815631], [-21.7736995, -43.3820339], [-21.7745931, -43.3827607], [-21.7750265, -43.3833099], [-21.7754176, -43.3836941], [-21.7780258, -43.3836149], [-21.7790181, -43.3837563], [-21.7789807, -43.3839459], [-21.7789856, -43.3845987], [-21.7794021, -43.3843857], [-21.7796777, -43.3842234], [-21.7796879, -43.3840703], [-21.7792837, -43.3838645], [-21.7791087, -43.3837921], [-21.7815959, -43.3820634], [-21.7817273, -43.3802408], [-21.7830486, -43.3783223], [-21.78402, -43.3782084], [-21.784542, -43.3778039], [-21.7848805, -43.3773246], [-21.7851199, -43.3769296], [-21.7855374, -43.3764669], [-21.7861236, -43.3761488], [-21.7863909, -43.3763514], [-21.7871282, -43.3763784], [-21.7879601, -43.3763086], [-21.7889142, -43.3770879], [-21.7890432, -43.3778444], [-21.7895032, -43.3783684], [-21.7899775, -43.378934], [-21.7899922, -43.3789496], [-21.7891243, -43.3813676], [-21.7887883, -43.3817368], [-21.7881445, -43.3818642], [-21.7873193, -43.3806567], [-21.787326, -43.3806143], [-21.7872731, -43.3805558], [-21.7871983, -43.3806343], [-21.7872159, -43.3806728], [-21.7871758, -43.3808405], [-21.7890847, -43.3828171], [-21.7887671, -43.3832194], [-21.7890847, -43.3828171], [-21.7896823, -43.3828481], [-21.7943521, -43.3798625], [-21.794362, -43.3798478], [-21.7944872, -43.3795837], [-21.7945384, -43.3795124], [-21.7939766, -43.3738987], [-21.7936269, -43.3724974], [-21.7936026, -43.3667516], [-21.7936953, -43.3666541], [-21.7937147, -43.366612], [-21.7935504, -43.3662431], [-21.7934549, -43.3662313], [-21.7933536, -43.3661999], [-21.7929088, -43.3660746], [-21.7916358, -43.3655384], [-21.7907432, -43.3650686], [-21.7907157, -43.3648812], [-21.7909644, -43.3647593], [-21.7912434, -43.3639496], [-21.7911476, -43.362658], [-21.7916921, -43.3625747], [-21.7923354, -43.3622886], [-21.7924591, -43.3622511], [-21.7924004, -43.362155], [-21.7920317, -43.3616932], [-21.7916055, -43.3611821], [-21.7917202, -43.3609867], [-21.7915662, -43.3608932], [-21.7911736, -43.3606123], [-21.7902738, -43.3589573], [-21.7901688, -43.3586772], [-21.7900486, -43.3583641], [-21.7899216, -43.3575192], [-21.7900137, -43.3552641], [-21.7900883, -43.3545734], [-21.7900761, -43.3533664], [-21.7898935, -43.3528559], [-21.7898524, -43.3527937], [-21.7892603, -43.3529681], [-21.7878778, -43.3509917], [-21.7857805, -43.347438], [-21.785705, -43.3473306], [-21.785575, -43.3470628], [-21.7868345, -43.3460292], [-21.7865335, -43.3456233], [-21.7861167, -43.345061], [-21.7854436, -43.3456147], [-21.7847774, -43.3461631], [-21.7851832, -43.3467451], [-21.7854101, -43.3470611], [-21.7855778, -43.3473457], [-21.785705, -43.3473306], [-21.785575, -43.3470628], [-21.7868345, -43.3460292], [-21.7865335, -43.3456233], [-21.7861167, -43.345061], [-21.7868177, -43.3444702], [-21.7861167, -43.345061], [-21.7854436, -43.3456147], [-21.7847774, -43.3461631], [-21.7851832, -43.3467451], [-21.786236, -43.3458701], [-21.7865335, -43.3456233], [-21.7887025, -43.3441625], [-21.7884025, -43.343727], [-21.7878678, -43.3429924], [-21.7881955, -43.3425336], [-21.7892902, -43.3438359], [-21.7894402, -43.3441979], [-21.7895336, -43.3445042], [-21.7888879, -43.3446714], [-21.7868345, -43.3460292], [-21.7865335, -43.3456233], [-21.7861167, -43.345061], [-21.7857694, -43.3445927], [-21.7856518, -43.3445635], [-21.785031, -43.3450743], [-21.7843888, -43.3456028], [-21.7829499, -43.3467903], [-21.7822566, -43.3468285], [-21.779771, -43.346525], [-21.7796564, -43.3465123], [-21.778864, -43.3476496], [-21.7783131, -43.3484509], [-21.7782553, -43.3484492], [-21.7781629, -43.3484251], [-21.7775307, -43.3480004], [-21.7774768, -43.347925], [-21.7774528, -43.3478701], [-21.7773887, -43.3478667], [-21.7772855, -43.3478311], [-21.7765486, -43.3473416], [-21.7761893, -43.3478634], [-21.7759669, -43.3481939], [-21.7751173, -43.3493893], [-21.7743038, -43.3500451], [-21.773845, -43.3503708], [-21.7736749, -43.3503606], [-21.7730754, -43.3501359], [-21.7724316, -43.3500665], [-21.772194, -43.3500331], [-21.7716168, -43.3508842], [-21.770804, -43.3502636], [-21.770755, -43.3502034], [-21.770706, -43.3502527], [-21.7707518, -43.3503093], [-21.7709216, -43.3511681], [-21.7703264, -43.3513033], [-21.7701777, -43.3513333], [-21.7694827, -43.3514833], [-21.7700086, -43.3538517], [-21.769428, -43.3541687], [-21.7692079, -43.3541357], [-21.7687813, -43.3540695], [-21.7671282, -43.3541793], [-21.7670767, -43.3542009], [-21.7663402, -43.3538459], [-21.7656413, -43.3536373], [-21.7652826, -43.3537285], [-21.7651042, -43.3529379], [-21.7649142, -43.3521409], [-21.7645119, -43.3522554], [-21.7649142, -43.3521409], [-21.7646687, -43.3511071], [-21.7644901, -43.3503622], [-21.7640695, -43.3504654], [-21.7636205, -43.3505739], [-21.762535, -43.3508579], [-21.7616649, -43.3511002], [-21.7608073, -43.3513196], [-21.7600996, -43.3515006], [-21.7593222, -43.3516994], [-21.759004, -43.3503677], [-21.7589581, -43.3501755], [-21.7580598, -43.3504061], [-21.7569504, -43.3506987], [-21.7558805, -43.3509808], [-21.7546993, -43.3513035], [-21.7536709, -43.3515867], [-21.7534837, -43.3516379], [-21.7529294, -43.3517613], [-21.7489446, -43.3527911], [-21.7488705, -43.3524149], [-21.7487315, -43.351749], [-21.7486422, -43.3513119], [-21.747487, -43.3515998], [-21.7468726, -43.3517541], [-21.7463837, -43.3518833], [-21.7460911, -43.3518412], [-21.7458949, -43.3517649], [-21.7446577, -43.3517645], [-21.7436269, -43.3520715], [-21.7425891, -43.3501082], [-21.7420909, -43.3494464], [-21.7415415, -43.3499399], [-21.7428134, -43.3522626], [-21.74308, -43.3534209], [-21.7432582, -43.3542797], [-21.7427047, -43.3543971], [-21.7416748, -43.354672], [-21.7409433, -43.3548943], [-21.7409025, -43.3550602], [-21.7416979, -43.3548162], [-21.7416748, -43.354672], [-21.7409433, -43.3548943], [-21.7403792, -43.3550495], [-21.7398952, -43.3552337], [-21.7395864, -43.3552996], [-21.7391286, -43.3553908], [-21.7346763, -43.356573], [-21.7335017, -43.3568753], [-21.7326706, -43.3569196], [-21.7322279, -43.3567703], [-21.7317168, -43.3567136], [-21.7326938, -43.3570137], [-21.7331672, -43.357382], [-21.7333212, -43.3574927], [-21.7343137, -43.357906], [-21.7346912, -43.3582247], [-21.734849, -43.358421], [-21.7349274, -43.3585644], [-21.7348859, -43.3587158], [-21.734695, -43.3588856], [-21.7349249, -43.3589845], [-21.7359713, -43.3597447], [-21.7360046, -43.3598485], [-21.7360081, -43.3598842], [-21.7360508, -43.3599085], [-21.7361513, -43.3599834], [-21.7367224, -43.3610113], [-21.7361513, -43.3599834], [-21.7360896, -43.3598571], [-21.7360587, -43.359817], [-21.7359713, -43.3597447], [-21.7349249, -43.3589845], [-21.7348859, -43.3587158], [-21.7349274, -43.3585644], [-21.7349877, -43.3584543], [-21.7350219, -43.358228], [-21.734802, -43.3580839], [-21.7343137, -43.357906], [-21.7333212, -43.3574927], [-21.7332196, -43.3573639], [-21.7329155, -43.3570576], [-21.7326706, -43.3569196], [-21.7322279, -43.3567703], [-21.7317168, -43.3567136], [-21.7311485, -43.3566783], [-21.7304914, -43.3566516], [-21.7299237, -43.3565707], [-21.7292544, -43.356523], [-21.728042, -43.3563414], [-21.7276602, -43.3562688], [-21.7275106, -43.3563557], [-21.7267423, -43.3563979], [-21.7238094, -43.3555861], [-21.7233047, -43.3554211], [-21.7225528, -43.3552673], [-21.7221617, -43.3551862], [-21.7219029, -43.3547275], [-21.7215422, -43.3547685], [-21.7213423, -43.3551072], [-21.721336, -43.3552144], [-21.7215935, -43.3555939], [-21.7221414, -43.3552979], [-21.722526, -43.3553868], [-21.7232748, -43.3555499], [-21.7238094, -43.3555861], [-21.7267423, -43.3563979], [-21.7275106, -43.3563557], [-21.728068, -43.3564344], [-21.7283651, -43.3564972], [-21.7288826, -43.3565613], [-21.7295364, -43.3566079], [-21.7304914, -43.3566516], [-21.7311485, -43.3566783], [-21.7317168, -43.3567136], [-21.7326938, -43.3570137], [-21.7331672, -43.357382], [-21.7333212, -43.3574927], [-21.7343137, -43.357906], [-21.7346912, -43.3582247], [-21.734849, -43.358421], [-21.7349877, -43.3584543], [-21.7357686, -43.3587957], [-21.7394795, -43.3629433], [-21.7396498, -43.3629718], [-21.7398198, -43.3631409], [-21.7397516, -43.3638836], [-21.7408438, -43.3641559], [-21.740918, -43.3642273], [-21.7409602, -43.3642075], [-21.7420597, -43.3643225], [-21.7430688, -43.3644195], [-21.7430167, -43.3652333], [-21.7435758, -43.3652955], [-21.7439206, -43.3655734], [-21.743875, -43.3658338], [-21.7424858, -43.36697], [-21.7421173, -43.3672559], [-21.7416965, -43.3675823], [-21.7411181, -43.3680284], [-21.7403895, -43.3688454], [-21.7380987, -43.3731473], [-21.7374066, -43.3760399], [-21.737268, -43.3768607], [-21.7367031, -43.3801416], [-21.7365188, -43.3813714], [-21.736673, -43.3822495], [-21.737208, -43.385083], [-21.7372397, -43.3852557], [-21.7372594, -43.3854599], [-21.7368823, -43.3888916], [-21.7359432, -43.3912915], [-21.7354662, -43.3918568], [-21.7342475, -43.3934314], [-21.7337351, -43.3940542], [-21.7325316, -43.3950002], [-21.732184, -43.395211], [-21.7319551, -43.3954683], [-21.7241056, -43.3964283], [-21.7239823, -43.396428], [-21.7186745, -43.4005696], [-21.7185814, -43.40081], [-21.7179933, -43.4023583], [-21.7142837, -43.4082858], [-21.7142144, -43.4084295], [-21.7137634, -43.409273], [-21.711416, -43.4137671], [-21.7089683, -43.4154609], [-21.7086998, -43.4155963], [-21.7081574, -43.4158689], [-21.7071173, -43.4164171], [-21.703687, -43.4195067], [-21.7019258, -43.4212804], [-21.7007788, -43.422382], [-21.6995326, -43.423605], [-21.6990996, -43.424096], [-21.6982186, -43.4252231], [-21.6961869, -43.4282736], [-21.6955169, -43.4292921], [-21.695281, -43.4296508], [-21.6950727, -43.4299674], [-21.6949415, -43.4301669], [-21.6943711, -43.4310678], [-21.6918253, -43.4321796], [-21.6912432, -43.4325496], [-21.6914268, -43.4331127], [-21.6916405, -43.4337648], [-21.690313, -43.4342811], [-21.6901048, -43.433633], [-21.6898986, -43.4330257], [-21.6898577, -43.4329063], [-21.6885335, -43.433411], [-21.6879432, -43.4337892], [-21.6884362, -43.4335923], [-21.688631, -43.4341934], [-21.6881303, -43.4343803], [-21.687258, -43.4346793], [-21.687066, -43.4341137], [-21.6864849, -43.4341939], [-21.6861889, -43.434311], [-21.6858678, -43.4345511], [-21.685868, -43.4359141]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            var measure_control_ab17278c19e5cc2cd56e37c94c162290 = new L.Control.Measure(
+                {"position": "topright", "primaryAreaUnit": "sqmeters", "primaryLengthUnit": "meters", "secondaryAreaUnit": "acres", "secondaryLengthUnit": "miles"});
+            map_1e08ec36ec29709d1af03097a98e72da.addControl(measure_control_ab17278c19e5cc2cd56e37c94c162290);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            L.control.fullscreen(
+                {"forceSeparateButton": false, "position": "topleft", "title": "Full Screen", "titleCancel": "Exit Full Screen"}
+            ).addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+    
+            tile_layer_4b7564f0b6354f64280b9d3259865cfa.addTo(map_1e08ec36ec29709d1af03097a98e72da);
+        
+</script>
+</html>
