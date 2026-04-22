@@ -445,3 +445,13 @@ display(mapa)
 
 O cenário proposto é um exercício prático e não uma sugestão realista de itinerário, dado que o propósito pedagógico por trás da análise é o aprendizado e aplicação de conceitos e ferramentas para resolver um problema complexo como o **TSP** (*Traveling Salesman Problem*), embora, nesse caso, sem a garantia de solução ótima. Por fim, o projeto conecta a atividade prática realizada, que consiste em calcular uma rota entre pontos, ao conceito teórico da **TSP** e à construção da rota final.
 
+**Referências:**
+
+Boeing, G. (2025). Modeling and Analyzing Urban Networks and Amenities
+with OSMnx. Geographical Analysis, published online ahead of print.
+<doi:10.1111/gean.70009>
+
+SCIKIT-LEARN. User Guide: Nearest Neighbors. 2025. Disponível em:
+<https://scikit-learn.org/stable/modules/neighbors.html>. Acesso em: 18
+JUN 2025.
+
