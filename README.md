@@ -1,4 +1,4 @@
-# Percurso Comida di Buteco 2026 Juiz de Fora
+# Descubra o melhor percurso com Python e Osmnx
 
 ### Introdução
 
