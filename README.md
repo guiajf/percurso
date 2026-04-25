@@ -1,5 +1,10 @@
 # Percurso Comida di Buteco 2026 Juiz de Fora
 
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![OSMnx](https://img.shields.io/badge/OSMnx-1.9+-green.svg)
+![Folium](https://img.shields.io/badge/Folium-0.15+-red.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 ### Introdução
 
 Para definir o trajeto mais curto em um roteiro hipotético com quarenta bares, reaproveitamos o código originalmente utilizado para os pontos de interesse do circuito turístico [Museu de Percurso Raphael Arcuri](https://github.com/guiajf/roteamento/). Esse código emprega a biblioteca Python **OSMnx**, desenvolvida e mantida por Geoff Boeing, professor de Planejamento Urbano e Análise Espacial da Universidade do Sul da Califórnia (USC).
@@ -45,19 +50,7 @@ gdf[:5]
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -221,9 +214,7 @@ Os nós de todos os segmentos são concatenados em *full_path*, evitando duplica
 
 
 ```python
-# ==========================================================
-# 3. CRIAÇÃO DO GRAFO E CÁLCULO DOS TRECHOS
-# ==========================================================
+
 center = (X[:, 0].mean(), X[:, 1].mean())
 G = ox.graph_from_point(center, dist=25000, network_type='drive')
 G = ox.add_edge_speeds(G)
@@ -245,9 +236,7 @@ A rota completa calculada (*route_coords*) é desenhada como uma linha poligonal
 
 
 ```python
-# ==========================================================
-# 4. MAPA COM FOLIUM (GEOMETRIA REAL DAS VIAS + TELA CHEIA)
-# ==========================================================
+
 m = folium.Map(location=center, zoom_start=13, scrollWheelZoom=True)
 Fullscreen().add_to(m)
 
@@ -363,6 +352,7 @@ for i, idx in enumerate(tour):
 ```python
 display(m)
 ```
+![](percurso_cb.png)
 
 **Considerações finais:**
 
@@ -378,8 +368,3 @@ SCIKIT-LEARN. User Guide: Nearest Neighbors. 2025. Disponível em:
 <https://scikit-learn.org/stable/modules/neighbors.html>. Acesso em: 18
 JUN 2025.
 
-
-
-```python
-
-```
