@@ -7,12 +7,15 @@
 
 ### Introdução
 
-Para definir o trajeto mais curto em um roteiro hipotético com quarenta bares, reaproveitamos o código originalmente utilizado para os pontos de interesse do circuito turístico [Museu de Percurso Raphael Arcuri](https://github.com/guiajf/roteamento/). Esse código emprega a biblioteca Python **OSMnx**, desenvolvida e mantida por Geoff Boeing, professor de Planejamento Urbano e Análise Espacial da Universidade do Sul da Califórnia (USC).
+Este projeto aplica conceitos de **Análise de redes** e **Otimização de rotas** para calcular o trajeto mais curto de um roteiro hipotético para visitar os quarenta bares participantes do concurso **Comida di Buteco 2026**, em Juiz de Fora/MG. 
+
+Embora tenha propósito didático, demonstra a aplicação prática do **Problema do Caixeiro Viajante (TSP - Traveling Salesman Problem)** usando dados reais da rede viária do *OpenStreetMap*.
 
 
 ### Objetivo
 
-Calcular e visualizar a rota mais curta para percorrer todos os bares participantes do concurso [Comida de Buteco 2026 JF](https://github.com/guiajf/comida-di-buteco).
+Calcular e visualizar a rota mais curta para percorrer todos os bares participantes, utilizando a rede viária real e gerar um mapa interativo com as distâncias e tempos estimados por trecho, marcadores personalizados e interface responsiva.
+
 
 ### Importamos as bibliotecas
 
