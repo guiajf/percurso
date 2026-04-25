@@ -238,7 +238,7 @@ Marcadores são adicionados para cada bar na ordem da rota, com ícones diferent
 Em seguida, itera pelos pares de coordenadas consecutivas na rota ordenada.
 Para cada par (origem e destino), encontra os nós mais próximos no grafo **OSM** e calcula o caminho mais curto (*ox.shortest_path*) considerando o tempo ou a distância. São extraídas as geometrias completas, inclusive as curvas, para que o trajeto siga o traçado real das vias, de acordo com o *OpenStreetMap*.
 
-As distâncias e o tempo de viagem de cada segmento e do caminho completo são acumuladas.
+Cada trecho calculado via algoritmo de **Dijkstra**. As distâncias e o tempo de viagem de cada segmento e do caminho completo são acumuladas.
 Os nós de todos os segmentos são concatenados, evitando duplicação do nó inicial de um novo segmento se ele for igual ao nó final do anterior.
 
 A rota completa calculada é desenhada como uma linha poligonal colorida no mapa. Um rótulo HTML fixo é adicionado ao mapa mostrando a distância total e o número de paradas. São adicionadas extensões úteis como *MeasureControl* e *Fullscreen*.
