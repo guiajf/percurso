@@ -7,7 +7,7 @@
 
 ### Introdução
 
-Este projeto aplica conceitos de **Análise de redes** e **Otimização de rotas** para calcular o trajeto mais curto de um roteiro hipotético para visitar os quarenta bares participantes do concurso **Comida di Buteco 2026**, em Juiz de Fora/MG. 
+Este projeto aplica conceitos de **Análise de redes** e **Otimização de rotas** para calcular o trajeto mais curto para percorrer os quarenta bares participantes do concurso **Comida di Buteco 2026**, em Juiz de Fora/MG. 
 
 Embora tenha propósito didático, demonstra a aplicação prática do **Problema do Caixeiro Viajante (TSP - Traveling Salesman Problem)** usando dados reais da rede viária do *OpenStreetMap*.
 
