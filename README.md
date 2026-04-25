@@ -165,6 +165,8 @@ A classe *NearestNeighbors* do módulo *sklearn.neighbors*, junto com o
 algoritmo *ball_tree*, fornece uma solução robusta para problemas de
 busca por proximidade, como o do roteamento entre pontos geográficos.
 
+Essa abordagem foi adotada por sua simplicidade e eficiência ao lidar com 40 pontos, apresentando uma complexidade computacional de *O(n²)* que se mostra perfeitamente adequada para essa escala. Embora não assegure uma solução matemática ideal, uma vez que o **Problema do Caixeiro Viajante** é classificado como **NP-difícil**, o método entrega um resultado prático, rápido e satisfatório para o contexto proposto.
+
 Foi definido um ponto de início (Ponto 0 - ADEGA BAR) e um ponto de término específico (Ponto 5 - BAR DO BREJO). O algoritmo principal (*while*) constrói a rota, adicionando o vizinho mais próximo ainda não visitado até atingir o ponto de destino ou visitar todos os pontos.
 
 A saída mostra a sequência de bares a serem visitados na rota calculada.
@@ -210,7 +212,8 @@ while len(tour) < len(X):
 ### Definimos o grafo
 
 Usamos o pacote **OSMnx** para baixar um grafo da rede viária para
-veículos automotivos, centrado no primeiro ponto da rota ordenada, com um raio de 25 km (dist=25000).
+veículos automotivos, centrado no primeiro ponto da rota ordenada, com um raio de 25 km (dist=25000), 
+com as velocidades calculadas automaticamente de acordo com o tipo de via. 
 
 
 ```python
@@ -233,7 +236,7 @@ O mapa **Folium** é inicializado centralizado no primeiro ponto da rota.
 Marcadores são adicionados para cada bar na ordem da rota, com ícones diferentes para início (verde), fim (vermelho) e demais (azul com ícone de cerveja).
 
 Em seguida, itera pelos pares de coordenadas consecutivas na rota ordenada.
-Para cada par (origem e destino), encontra os nós mais próximos no grafo **OSM** e calcula o caminho mais curto (*ox.shortest_path*) considerando o tempo ou a distância.
+Para cada par (origem e destino), encontra os nós mais próximos no grafo **OSM** e calcula o caminho mais curto (*ox.shortest_path*) considerando o tempo ou a distância. São extraídas as geometrias completas, inclusive as curvas, para que o trajeto siga o traçado real das vias, de acordo com o *OpenStreetMap*.
 
 As distâncias e o tempo de viagem de cada segmento e do caminho completo são acumuladas.
 Os nós de todos os segmentos são concatenados, evitando duplicação do nó inicial de um novo segmento se ele for igual ao nó final do anterior.
