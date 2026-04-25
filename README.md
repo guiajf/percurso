@@ -171,18 +171,20 @@ A saída mostra a sequência de bares a serem visitados na rota calculada.
 
 
 ```python
-# Calcular a distância para cada par de pontos consecutivos
 X = np.array(gdf[['latitude', 'longitude']])
 bares = gdf['Name'].tolist()
 
+# Criar modelo de vizinhos mais próximos
 nbrs = NearestNeighbors(n_neighbors=len(X), algorithm='ball_tree').fit(X)
 distances, indices = nbrs.kneighbors(X)
 
+# Algoritmo para construir a rota
 visited = np.zeros(len(X), dtype=bool)
-visited[0] = True
+visited[0] = True  # Iniciar pelo primeiro bar (ADEGA BAR)
 tour = [0]
 current = 0
 
+# Construir rota visitando o vizinho mais próximo não visitado
 while len(tour) < len(X):
     neighbors = indices[current]
     unvisited_mask = ~visited[neighbors]
@@ -190,12 +192,13 @@ while len(tour) < len(X):
     if np.any(unvisited_mask):
         nearest = neighbors[unvisited_mask][0]
     else:
-        # Fallback: se não houver vizinhos próximos não visitados, pega o mais próximo global
+        # Fallback: pegar o mais próximo global se não houver vizinhos
         unvisited_all = np.where(~visited)[0]
-        if len(unvisited_all) == 0: break
+        if len(unvisited_all) == 0:
+            break
         dists = distances[current, unvisited_all]
         nearest = unvisited_all[np.argmin(dists)]
-        
+    
     tour.append(nearest)
     visited[nearest] = True
     current = nearest
@@ -204,7 +207,7 @@ while len(tour) < len(X):
 
 ```
 
-### Definimos o percurso de carro
+### Definimos o grafo e calculamos os trechos
 
 Usamos o pacote **OSMnx** para baixar um grafo da rede viária para
 veículos automotivos, centrado no primeiro ponto da rota ordenada, com um raio de 25 km (dist=25000).
@@ -218,9 +221,10 @@ G = ox.add_edge_speeds(G)
 G = ox.add_edge_travel_times(G)
 nodes, edges = ox.graph_to_gdfs(G)
 
-# Cores distintas para cada trecho
+# Gerar cores distintas para cada trecho
 cmap = colormaps['tab10'].resampled(max(len(tour)-1, 2))
 hex_colors = [mcolors.rgb2hex(cmap(i)) for i in range(len(tour)-1)]
+
 ```
 
 ### Definimos o mapa
@@ -234,62 +238,85 @@ Para cada par (origem e destino), encontra os nós mais próximos no grafo **OSM
 As distâncias e o tempo de viagem de cada segmento e do caminho completo são acumuladas.
 Os nós de todos os segmentos são concatenados, evitando duplicação do nó inicial de um novo segmento se ele for igual ao nó final do anterior.
 
-A rota completa calculada é desenhada como uma linha poligonal colorida no mapa. Um rótulo HTML fixo é adicionado ao mapa mostrando a distância total e o número de paradas. São adicionadas extensões úteis como *Fullscreen*.
+A rota completa calculada é desenhada como uma linha poligonal colorida no mapa. Um rótulo HTML fixo é adicionado ao mapa mostrando a distância total e o número de paradas. São adicionadas extensões úteis como *MeasureControl* e *Fullscreen*.
 
 
 
 ```python
 
 m = folium.Map(location=center, zoom_start=13, scrollWheelZoom=True)
+
+# Adicionar controle de tela cheia
 Fullscreen().add_to(m)
 
-# 🔹 1. Inicializar acumulador de distância
-distancia_total_m = 0.0
+# Adicionar controle de medição (opcional, mas útil)
+MeasureControl(
+    position='bottomleft',
+    primary_length_unit='kilometers',
+    secondary_length_unit='meters',
+    primary_area_unit='sqmeters',
+    secondary_area_unit='hectares'
+).add_to(m)
 
-# Adiciona os trechos coloridos com popup de distância/tempo
+# Inicializar acumulador de distância
+distancia_total_m = 0.0
+tempo_total_sec = 0.0
+
+# Adicionar os trechos coloridos com popup de distância/tempo
 for i in range(len(tour) - 1):
     idx_start, idx_end = tour[i], tour[i+1]
     lat1, lon1 = X[idx_start]
     lat2, lon2 = X[idx_end]
     
+    # Encontrar nós mais próximos no grafo
     node1 = ox.distance.nearest_nodes(G, lon1, lat1)
     node2 = ox.distance.nearest_nodes(G, lon2, lat2)
     
+    # Calcular caminho mais curto (prioriza tempo, fallback para distância)
     try:
         path = nx.shortest_path(G, node1, node2, weight='travel_time')
     except nx.NetworkXNoPath:
         path = nx.shortest_path(G, node1, node2, weight='length')
-        
+    
     dist_m, time_sec = 0.0, 0.0
     path_coords = []
     
+    # Extrair geometria real das vias (inclui curvas)
     for u, v in zip(path[:-1], path[1:]):
         edge_data = G.edges[u, v, 0]
         dist_m += edge_data.get('length', 0)
         time_sec += edge_data.get('travel_time', 0)
         
+        # Usar geometria real se disponível
         if 'geometry' in edge_data:
             for lon, lat in edge_data['geometry'].coords:
                 path_coords.append((lat, lon))
         else:
+            # Fallback: linha reta entre nós
             path_coords.append((nodes.loc[u, 'y'], nodes.loc[u, 'x']))
             path_coords.append((nodes.loc[v, 'y'], nodes.loc[v, 'x']))
-
-    if time_sec == 0: 
-        time_sec = (dist_m / 1000) / 40 * 3600
-        
-    dist_km, time_min = round(dist_m / 1000, 2), round(time_sec / 60, 1)
     
-    # 🔹 2. Acumular distância total
+    # Calcular tempo estimado se não disponível
+    if time_sec == 0:
+        time_sec = (dist_m / 1000) / 40 * 3600  # Estimativa: 40 km/h
+    
+    dist_km = round(dist_m / 1000, 2)
+    time_min = round(time_sec / 60, 1)
+    
+    # Acumular distância e tempo totais
     distancia_total_m += dist_m
+    tempo_total_sec += time_sec
     
+    # Criar popup HTML
     popup_html = f"""
-    <div style='font-family:sans-serif; font-size:12px;'>
-        <b>{bares[idx_start]} ➝ {bares[idx_end]}</b><br>
-        📍 Distância: {dist_km} km<br>
-        ⏱️ Tempo estimado: {time_min} min
+    <div style='font-family:sans-serif; font-size:12px; padding:5px;'>
+        <b style='color:#ff6b6b; font-size:13px;'>{bares[idx_start]} ➝ {bares[idx_end]}</b><br>
+        <hr style='margin:5px 0; border:none; border-top:1px solid #ddd;'>
+        📍 Distância: <b>{dist_km} km</b><br>
+        ⏱️ Tempo estimado: <b>{time_min} min</b>
     </div>"""
     
+    # Adicionar linha ao mapa
     folium.PolyLine(
         locations=path_coords,
         color=hex_colors[i],
@@ -298,8 +325,31 @@ for i in range(len(tour) - 1):
         popup=folium.Popup(popup_html, max_width=300)
     ).add_to(m)
 
-# 🔹 3. Gerar e injetar o rótulo fixo
+for i, idx in enumerate(tour):
+    lat, lon = X[idx, 0], X[idx, 1]
+    bar_name = bares[idx]
+    
+    # Definir ícone conforme posição na rota
+    if i == 0:
+        icon_color, icon_name = 'green', 'play'
+        popup_text = f"<b style='color:green; font-size:15px;'>🟢 {bar_name}</b><br>🏁 Início do percurso<br>Parada 1 de {len(tour)}"
+    elif i == len(tour) - 1:
+        icon_color, icon_name = 'red', 'stop'
+        popup_text = f"<b style='color:red; font-size:15px;'>🔴 {bar_name}</b><br>🏁 Fim do percurso<br>Parada {i+1} de {len(tour)}"
+    else:
+        icon_color, icon_name = 'blue', 'beer'
+        popup_text = f"<b style='color:blue;'>🔵 {bar_name}</b><br>Parada {i+1} de {len(tour)}"
+    
+    folium.Marker(
+        location=[lat, lon],
+        popup=folium.Popup(popup_text, max_width=250),
+        tooltip=f"{i+1}. {bar_name}",  # Aparece ao passar o mouse
+        icon=folium.Icon(color=icon_color, icon=icon_name, prefix='fa'),
+        draggable=False  # Marcadores fixos
+    ).add_to(m)
+
 distancia_total_km = distancia_total_m / 1000.0
+tempo_total_horas = tempo_total_sec / 3600.0
 
 label_html = f"""
 <div style="
@@ -308,49 +358,50 @@ label_html = f"""
     right: 10px; 
     z-index: 1000; 
     background-color: white; 
-    padding: 12px 16px; 
-    border-radius: 8px; 
-    border: 2px solid #ff6b6b; 
+    padding: 15px 18px; 
+    border-radius: 10px; 
+    border: 3px solid #ff6b6b; 
     font-family: 'Segoe UI', Arial, sans-serif; 
     font-size: 14px; 
     font-weight: bold; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     text-align: center;
+    min-width: 280px;
 ">
-    <div style="color: #ff6b6b; font-size: 16px; margin-bottom: 5px;">🍺 Roteiro completo</div>
-    <div>📍 Paradas: {len(tour)} bares</div>
-    <div>🚶 Distância total a percorrer: <span style="color: #ff6b6b;">{distancia_total_km:.2f} km</span></div>
-    <div style="font-size: 11px; color: #666; margin-top: 5px;">
-        🟢 Início | 🔴 Fim | 🔵 Demais bares
+    <div style="color: #ff6b6b; font-size: 18px; margin-bottom: 8px; border-bottom: 2px solid #ff6b6b; padding-bottom: 5px;">
+        🍺 Percurso Comida di Buteco 2026
+    </div>
+    <div style="margin: 8px 0;">
+        <div>📍 Total de paradas: <span style="color: #2c3e50;">{len(tour)} bares</span></div>
+        <div style="margin-top: 5px;">🚗 Distância total: <span style="color: #ff6b6b; font-size: 16px;">{distancia_total_km:.2f} km</span></div>
+        <div style="margin-top: 5px;">⏱️ Tempo estimado: <span style="color: #27ae60;">{tempo_total_horas:.1f} horas</span></div>
+    </div>
+    <div style="
+        font-size: 11px; 
+        color: #666; 
+        margin-top: 10px; 
+        padding-top: 8px; 
+        border-top: 1px solid #ddd;
+        display: flex; 
+        justify-content: space-around;
+    ">
+        <span>🟢 Início</span>
+        <span>🔴 Fim</span>
+        <span>🔵 Demais</span>
+    </div>
+    <div style="
+        font-size: 10px; 
+        color: #999; 
+        margin-top: 8px;
+        font-style: italic;
+    ">
+        💡 Clique nos trechos para ver detalhes
     </div>
 </div>
 """
 
 m.get_root().html.add_child(folium.Element(label_html))
-
-
-# Adiciona marcadores com ícones personalizados (início/meio/fim)
-for i, idx in enumerate(tour):
-    lat, lon = X[idx, 0], X[idx, 1]
-    bar_name = bares[idx]
-    
-    if i == 0:
-        icon_color, icon_name = 'green', 'play'
-    elif i == len(tour) - 1:
-        icon_color, icon_name = 'red', 'stop'
-    else:
-        icon_color, icon_name = 'blue', 'beer'
-        
-    folium.Marker(
-        location=[lat, lon],
-        popup=folium.Popup(f"<b style='font-size:14px;'>{bar_name}</b><br>Parada {i+1} de {len(tour)}", max_width=200),
-        tooltip=bar_name,
-        icon=folium.Icon(color=icon_color, icon=icon_name, prefix='fa'),
-        draggable=False
-    ).add_to(m)
-
 ```
-
 
 ```python
 display(m)
