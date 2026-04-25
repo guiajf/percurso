@@ -207,7 +207,7 @@ while len(tour) < len(X):
 ### Definimos o percurso de carro
 
 Usamos o pacote **OSMnx** para baixar um grafo da rede viária para
-veículos automotivos, centrado no primeiro ponto da rota ordenada, com um raio de 20 km (dist=20000).
+veículos automotivos, centrado no primeiro ponto da rota ordenada, com um raio de 25 km (dist=25000).
 
 Em seguida, itera pelos pares de coordenadas consecutivas na rota ordenada.
 Para cada par (origem e destino), encontra os nós mais próximos no grafo **OSM** e calcula o caminho mais curto (*ox.shortest_path*) considerando a distância (*weight='length'*).
