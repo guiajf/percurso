@@ -209,12 +209,6 @@ while len(tour) < len(X):
 Usamos o pacote **OSMnx** para baixar um grafo da rede viária para
 veículos automotivos, centrado no primeiro ponto da rota ordenada, com um raio de 25 km (dist=25000).
 
-Em seguida, itera pelos pares de coordenadas consecutivas na rota ordenada.
-Para cada par (origem e destino), encontra os nós mais próximos no grafo **OSM** e calcula o caminho mais curto (*ox.shortest_path*) considerando a distância (*weight='length'*).
-
-As distâncias de cada segmento e do caminho completo são acumuladas.
-Os nós de todos os segmentos são concatenados em *full_path*, evitando duplicação do nó inicial de um novo segmento se ele for igual ao nó final do anterior.
-
 
 ```python
 
@@ -233,6 +227,12 @@ hex_colors = [mcolors.rgb2hex(cmap(i)) for i in range(len(tour)-1)]
 
 O mapa **Folium** é inicializado centralizado no primeiro ponto da rota.
 Marcadores são adicionados para cada bar na ordem da rota, com ícones diferentes para início (verde), fim (vermelho) e demais (azul com ícone de cerveja).
+
+Em seguida, itera pelos pares de coordenadas consecutivas na rota ordenada.
+Para cada par (origem e destino), encontra os nós mais próximos no grafo **OSM** e calcula o caminho mais curto (*ox.shortest_path*) considerando o tempo ou a distância.
+
+As distâncias e o tempo de viagem de cada segmento e do caminho completo são acumuladas.
+Os nós de todos os segmentos são concatenados, evitando duplicação do nó inicial de um novo segmento se ele for igual ao nó final do anterior.
 
 A rota completa calculada é desenhada como uma linha poligonal colorida no mapa. Um rótulo HTML fixo é adicionado ao mapa mostrando a distância total e o número de paradas. São adicionadas extensões úteis como *Fullscreen*.
 
