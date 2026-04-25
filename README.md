@@ -234,7 +234,7 @@ hex_colors = [mcolors.rgb2hex(cmap(i)) for i in range(len(tour)-1)]
 O mapa **Folium** é inicializado centralizado no primeiro ponto da rota.
 Marcadores são adicionados para cada bar na ordem da rota, com ícones diferentes para início (verde), fim (vermelho) e demais (azul com ícone de cerveja).
 
-A rota completa calculada (*route_coords*) é desenhada como uma linha poligonal vermelha no mapa. Um rótulo HTML fixo é adicionado ao mapa mostrando a distância total e o número de paradas. São adicionadas extensões úteis como *MeasureControl*(medição de distâncias) e *Fullscreen*.
+A rota completa calculada é desenhada como uma linha poligonal colorida no mapa. Um rótulo HTML fixo é adicionado ao mapa mostrando a distância total e o número de paradas. São adicionadas extensões úteis como *Fullscreen*.
 
 
 
