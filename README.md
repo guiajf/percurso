@@ -1,4 +1,4 @@
-# Percurso Comida di Buteco 2026 Juiz de Fora
+# Descubra o melhor percurso com Osmnx e Networkx
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![OSMnx](https://img.shields.io/badge/OSMnx-1.9+-green.svg)
