@@ -207,7 +207,7 @@ while len(tour) < len(X):
 
 ```
 
-### Definimos o grafo e calculamos os trechos
+### Definimos o grafo
 
 Usamos o pacote **OSMnx** para baixar um grafo da rede viária para
 veículos automotivos, centrado no primeiro ponto da rota ordenada, com um raio de 25 km (dist=25000).
@@ -227,7 +227,7 @@ hex_colors = [mcolors.rgb2hex(cmap(i)) for i in range(len(tour)-1)]
 
 ```
 
-### Definimos o mapa
+### Definimos o mapa e calculamos os trechos
 
 O mapa **Folium** é inicializado centralizado no primeiro ponto da rota.
 Marcadores são adicionados para cada bar na ordem da rota, com ícones diferentes para início (verde), fim (vermelho) e demais (azul com ícone de cerveja).
