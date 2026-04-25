@@ -428,3 +428,7 @@ SCIKIT-LEARN. *User Guide: Nearest Neighbors*. 2025. Disponível em:
 <https://scikit-learn.org/stable/modules/neighbors.html>. Acesso em: 18
 JUN 2025.
 
+Traub, V., Vygen, J. (2024). *Approximation Algorithms
+for Traveling Salesman Problems*. Publicado por Cambridge University Press. DOI: https://doi.org/10.1017/
+9781009445436. Versão pré-print.
+
