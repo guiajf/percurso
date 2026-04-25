@@ -9,7 +9,9 @@
 
 Este projeto aplica conceitos de **Análise de redes** e **Otimização de rotas** para calcular o trajeto mais curto para percorrer os quarenta bares participantes do concurso **Comida di Buteco 2026**, em Juiz de Fora/MG. 
 
-Embora tenha propósito didático, demonstra a aplicação prática do **Problema do Caixeiro Viajante (TSP - Traveling Salesman Problem)** usando dados reais da rede viária do *OpenStreetMap*.
+Embora tenha propósito didático, demonstra a aplicação prática do **Problema do Caixeiro Viajante (TSP - Traveling Salesman Problem)**, em sua variante aberta, equivalente ao **Problema do Caminho Hamiltoniano**. o *TSP clássico* é formalmente definido como a busca por um ciclo hamiltoniano de custo mínimo: o viajante visita cada vértice exatamente uma vez e retorna ao ponto de partida.
+
+Ambas as variantes compartilham a mesma classe de complexidade (**NP-difícil**), mas diferem na formulação matemática, nos limites inferiores de custo e nas estratégias de otimização.
 
 
 ### Objetivo
@@ -414,7 +416,8 @@ display(m)
 
 **Considerações finais:**
 
-O cenário proposto é um exercício prático e não uma sugestão realista de itinerário, dado que o propósito pedagógico por trás da análise é o aprendizado e aplicação de conceitos e ferramentas para resolver um problema complexo como o **TSP** (*Traveling Salesman Problem*), embora, nesse caso, sem a garantia de solução ideal. Por fim, o projeto conecta a atividade prática realizada, que consiste em calcular uma rota entre pontos, ao conceito teórico da **TSP** e à construção da rota final.
+O cenário proposto é um exercício prático e não uma sugestão realista de itinerário, dado que o propósito pedagógico por trás da análise é o aprendizado e aplicação de conceitos e ferramentas para resolver uma variante do **TSP** (*Traveling Salesman Problem*).
+Especificamente, o código implementa o **Open TSP** (ou *Traveling Salesperson Path Problem*), buscando um *Caminho Hamiltoniano* de custo mínimo. Diferente do ciclo clássico, onde o vendedor deve retornar ao ponto de origem, esta variante define um ponto de partida fixo e um destino livre, sem o fechamento do circuito. Utilizando uma *heurística gulosa* (*Nearest Neighbor*), obtemos uma solução subótima, porém computacionalmente viável e visualmente intuitiva, conectando a atividade prática de roteamento aos conceitos teóricos de grafos e otimização.
 
 Acesse o mapa interativo: https://guiajf.github.io/percurso/.
 
