@@ -165,7 +165,7 @@ A classe *NearestNeighbors* do módulo *sklearn.neighbors*, junto com o
 algoritmo *ball_tree*, fornece uma solução robusta para problemas de
 busca por proximidade, como o do roteamento entre pontos geográficos.
 
-Essa abordagem foi adotada por sua simplicidade e eficiência ao lidar com 40 pontos, apresentando uma complexidade computacional de *O(n²)* que se mostra perfeitamente adequada para essa escala. Embora não assegure uma solução matemática ideal, uma vez que o **Problema do Caixeiro Viajante** é classificado como **NP-difícil**, o método entrega um resultado prático, rápido e satisfatório para o contexto proposto. Para encontrar a solução exata, teriam que ser avaliadas *40!* combinações possíveis, o equivalente a $$815915283 * 10 ** 45$$.
+Essa abordagem foi adotada por sua simplicidade e eficiência ao lidar com 40 pontos, apresentando uma complexidade computacional de *O(n²)* que se mostra perfeitamente adequada para essa escala. Embora não assegure uma solução matemática ideal, uma vez que o **Problema do Caixeiro Viajante** é classificado como **NP-difícil**, o método entrega um resultado prático, rápido e satisfatório para o contexto proposto. Para encontrar a solução exata, teriam que ser avaliadas *40!* combinações possíveis, o equivalente a $\`815915283 * 10 ** 45`$.
 
 
 Foi definido um ponto de início (Ponto 0 - ADEGA BAR) e um ponto de término específico (Ponto 5 - BAR DO BREJO). O algoritmo principal (*while*) constrói a rota, adicionando o vizinho mais próximo ainda não visitado até atingir o ponto de destino ou visitar todos os pontos.
