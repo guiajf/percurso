@@ -7,11 +7,25 @@
 
 ### Introdução
 
-Este projeto aplica conceitos de *Análise de Redes* e *Otimização de Rotas* para determinar o trajeto de menor custo que percorre os quarenta bares participantes do concurso Comida di Buteco 2026, em Juiz de Fora/MG. O problema consiste em visitar todos os vértices exatamente uma vez, sem retorno à origem – caracterizando a variante aberta do **Problema do Caixeiro Viajante** (**TSP**), equivalente ao *Problema do Caminho Hamiltoniano*.
+Este projeto aplica conceitos de *Análise de Redes* e *Otimização de Rotas* para 
+calcular o trajeto mais curto que percorre os quarenta bares participantes do 
+concurso Comida di Buteco 2026, em Juiz de Fora/MG.
 
-O **TSP** clássico, por sua vez, é formalmente definido como a busca por um *ciclo hamiltoniano* de custo mínimo, no qual o viajante retorna ao ponto de partida. Embora ambas as variantes compartilhem a mesma classe de complexidade (**NP-difícil**), elas diferem na formulação matemática, nos limites inferiores de custo e nas estratégias de otimização aplicáveis.
+O problema consiste em visitar todos os vértices (bares) exatamente uma vez, 
+sem retorno ao ponto de partida, o que corresponde à variante aberta do 
+**Problema do Caixeiro Viajante** (**TSP**), equivalente ao *Problema do Caminho Hamiltoniano*.
 
-À medida que a escala do problema aumenta, o número de rotas possíveis sofre crescimento exponencial, inviabilizando a solução exata em tempo hábil. Diante disso, algoritmos exatos, aproximados e heurísticos são empregados para resolver o **TSP**, conforme o porte.
+Por outro lado, o **TSP** clássico é formalmente definido como a busca por um 
+CICLO HAMILTONIANO de custo mínimo, no qual o viajante retorna à origem.
+
+Ambas as variantes compartilham a mesma classe de complexidade (**NP-difícil**), 
+mas diferem na formulação matemática, nos limites inferiores de custo e nas 
+estratégias de otimização.
+
+À medida que o tamanho do problema aumenta, o número de rotas possíveis 
+cresce drasticamente, tornando a solução exata inviável em curto espaço de tempo. 
+Por isso, algoritmos exatos, aproximados e heurísticos são empregados para 
+resolver o **TSP** conforme a escala da instância.
 
 
 ### Objetivo
