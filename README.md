@@ -192,8 +192,7 @@ polinomial (isto é, em um tempo que cresça de forma gerenciável com o
 número de cidades). Para encontrar a solução exata, teriam que ser 
 avaliadas todas as *40!* combinações possíveis, equivalente a 
 aproximadamente 8 × 10⁴⁵ rotas (o número 815 seguido de 45 zeros). 
-Mesmo computadores extremamente rápidos levariam um tempo superior à 
-idade do universo para completar essa tarefa.
+Mesmo computadores extremamente rápidos levariam um tempo incomensurável para completar essa tarefa.
 
 É precisamente por essa inviabilidade computacional que se justifica 
 o uso de heurísticas como a do vizinho mais próximo, que sacrificam 
