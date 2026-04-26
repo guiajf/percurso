@@ -18,9 +18,10 @@ sem retorno ao ponto de partida, o que corresponde à variante aberta do
 Por outro lado, o **TSP** clássico é formalmente definido como a busca por um 
 CICLO HAMILTONIANO de custo mínimo, no qual o viajante retorna à origem.
 
-Ambas as variantes compartilham a mesma classe de complexidade (**NP-difícil**), 
-mas diferem na formulação matemática, nos limites inferiores de custo e nas 
-estratégias de otimização.
+## Introdução (versão revisada)
+
+Ambas as variantes compartilham a mesma classe de complexidade, explicada em detalhes na seção de cálculo da rota, mas diferem na formulação
+matemática, nos limites inferiores de custo e nas estratégias de otimização.
 
 À medida que o tamanho do problema aumenta, o número de rotas possíveis 
 cresce drasticamente, tornando a solução exata inviável em curto espaço de tempo. 
@@ -451,9 +452,13 @@ display(m)
 
 O cenário proposto é um exercício prático e não uma sugestão realista de itinerário, dado que o propósito pedagógico por trás da análise é o aprendizado e aplicação de conceitos e ferramentas para resolver uma variante do **TSP** (*Traveling Salesman Problem*).
 
-Especificamente, o código implementa o **Open TSP** (ou *Traveling Salesperson Path Problem*), buscando um *Caminho Hamiltoniano* de custo mínimo. Diferente do ciclo clássico, onde o vendedor deve retornar ao ponto de origem, esta variante define um ponto de partida fixo e um destino livre, sem o fechamento do circuito.
+Especificamente, o código implementa o **Open TSP**, variante aberta discutida na
+introdução, buscando um Caminho Hamiltoniano de custo mínimo.
 
-Utilizando uma *heurística gulosa* (*Nearest Neighbor*), obtemos uma solução subótima, porém computacionalmente viável e visualmente intuitiva, conectando a atividade prática de roteamento aos conceitos teóricos de grafos e otimização.
+Utilizando uma **heurística gulosa (Nearest Neighbor)**, conforme detalhado na
+seção de cálculo da rota, obtemos uma solução subótima, porém computacionalmente
+viável e visualmente intuitiva, conectando a atividade prática de roteamento aos
+conceitos teóricos de grafos e otimização.
 
 Acesse o mapa interativo: https://guiajf.github.io/percurso/.
 
