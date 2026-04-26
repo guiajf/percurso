@@ -417,7 +417,10 @@ display(m)
 **Considerações finais:**
 
 O cenário proposto é um exercício prático e não uma sugestão realista de itinerário, dado que o propósito pedagógico por trás da análise é o aprendizado e aplicação de conceitos e ferramentas para resolver uma variante do **TSP** (*Traveling Salesman Problem*).
-Especificamente, o código implementa o **Open TSP** (ou *Traveling Salesperson Path Problem*), buscando um *Caminho Hamiltoniano* de custo mínimo. Diferente do ciclo clássico, onde o vendedor deve retornar ao ponto de origem, esta variante define um ponto de partida fixo e um destino livre, sem o fechamento do circuito. Utilizando uma *heurística gulosa* (*Nearest Neighbor*), obtemos uma solução subótima, porém computacionalmente viável e visualmente intuitiva, conectando a atividade prática de roteamento aos conceitos teóricos de grafos e otimização.
+
+Especificamente, o código implementa o **Open TSP** (ou *Traveling Salesperson Path Problem*), buscando um *Caminho Hamiltoniano* de custo mínimo. Diferente do ciclo clássico, onde o vendedor deve retornar ao ponto de origem, esta variante define um ponto de partida fixo e um destino livre, sem o fechamento do circuito.
+
+Utilizando uma *heurística gulosa* (*Nearest Neighbor*), obtemos uma solução subótima, porém computacionalmente viável e visualmente intuitiva, conectando a atividade prática de roteamento aos conceitos teóricos de grafos e otimização.
 
 Acesse o mapa interativo: https://guiajf.github.io/percurso/.
 
