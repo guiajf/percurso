@@ -15,11 +15,6 @@ O problema consiste em visitar todos os vértices (bares) exatamente uma vez,
 sem retorno ao ponto de partida, o que corresponde à variante aberta do 
 **Problema do Caixeiro Viajante** (**TSP**), equivalente ao *Problema do Caminho Hamiltoniano*.
 
-Por outro lado, o **TSP** clássico é formalmente definido como a busca por um 
-CICLO HAMILTONIANO de custo mínimo, no qual o viajante retorna à origem.
-
-## Introdução (versão revisada)
-
 Ambas as variantes compartilham a mesma classe de complexidade, explicada em detalhes na seção de cálculo da rota, mas diferem na formulação
 matemática, nos limites inferiores de custo e nas estratégias de otimização.
 
@@ -453,7 +448,7 @@ display(m)
 O cenário proposto é um exercício prático e não uma sugestão realista de itinerário, dado que o propósito pedagógico por trás da análise é o aprendizado e aplicação de conceitos e ferramentas para resolver uma variante do **TSP** (*Traveling Salesman Problem*).
 
 Especificamente, o código implementa o **Open TSP**, variante aberta discutida na
-introdução, buscando um Caminho Hamiltoniano de custo mínimo.
+introdução, buscando um *Caminho Hamiltoniano* de custo mínimo.
 
 Utilizando uma **heurística gulosa (Nearest Neighbor)**, conforme detalhado na
 seção de cálculo da rota, obtemos uma solução subótima, porém computacionalmente
