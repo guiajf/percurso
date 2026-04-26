@@ -181,8 +181,27 @@ A classe *NearestNeighbors* do módulo *sklearn.neighbors*, junto com o
 algoritmo *ball_tree*, fornece uma solução robusta para problemas de
 busca por proximidade, como o do roteamento entre pontos geográficos.
 
-Essa abordagem foi adotada por sua simplicidade e eficiência ao lidar com 40 pontos, apresentando uma complexidade computacional de *O(n²)* que se mostra perfeitamente adequada para essa escala. Embora não assegure uma solução matemática ideal, uma vez que o **Problema do Caixeiro Viajante** é classificado como **NP-difícil**, o método entrega um resultado prático, rápido e satisfatório para o contexto proposto. Para encontrar a solução exata, teriam que ser avaliadas *40!* combinações possíveis, o equivalente a $8.15915283 \times 10^{45}$, ou seja, o número 815 seguido de 45 zeros.
+Essa abordagem foi adotada por sua simplicidade e eficiência ao lidar 
+com 40 pontos, apresentando uma complexidade computacional de *O(n²)* 
+que se mostra perfeitamente adequada para essa escala.
 
+Embora não assegure uma solução matemática ideal, em razão da 
+classificação do **Problema do Caixeiro Viajante** como **NP-difícil**, 
+o método entrega um resultado prático, rápido e satisfatório para 
+o contexto proposto.
+
+O termo "NP-difícil" significa que, para instâncias grandes do problema, 
+não se conhece algoritmo capaz de encontrar a solução exata em tempo 
+polinomial (isto é, em um tempo que cresça de forma gerenciável com o 
+número de cidades). Para encontrar a solução exata, teriam que ser 
+avaliadas todas as *40!* combinações possíveis, equivalente a 
+aproximadamente 8 × 10⁴⁵ rotas (o número 815 seguido de 45 zeros). 
+Mesmo computadores extremamente rápidos levariam um tempo superior à 
+idade do universo para completar essa tarefa.
+
+É precisamente por essa inviabilidade computacional que se justifica 
+o uso de heurísticas como a do vizinho mais próximo, que sacrificam 
+a garantia de otimalidade em favor da eficiência prática.
 
 Foi definido um ponto de início (Ponto 0 - ADEGA BAR) para que o algoritmo principal (*while*) construa a rota, adicionando o vizinho mais próximo ainda não visitado até atingir o ponto de destino ou visitar todos os pontos.
 
