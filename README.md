@@ -29,7 +29,45 @@ resolver o **TSP** conforme a escala da instância.
 Calcular e visualizar a rota mais curta para percorrer todos os bares participantes, utilizando a rede viária real e gerar um mapa interativo com as distâncias e tempos estimados por trecho, marcadores personalizados e interface responsiva.
 
 
-### Importamos as bibliotecas
+### Bibliotecas
+
+Carregamos as seguintes bibliotecas:
+
+- **pandas**: biblioteca fundamental para análise de dados em Python,
+oferece estruturas como DataFrame e Series para manipulação e
+análise de dados tabulares. Neste projeto, é utilizada para
+carregar e inspecionar a lista dos 40 bares participantes.
+
+- **numpy**: pacote essencial para computação científica, fornece
+suporte a arrays multidimensionais e funções matemáticas de
+alto desempenho. Utilizado para converter coordenadas e gerenciar
+a matriz de distâncias.
+
+- **osmnx**: biblioteca especializada para modelagem de redes urbanas
+a partir de dados do OpenStreetMap. Permite baixar grafos viários
+reais e calcular tempos de viagem. Utilizada para obter a rede
+de ruas de Juiz de Fora (raio de 25 km).
+
+- **networkx**: biblioteca robusta para criação e análise de grafos.
+Fornece implementações de algoritmos como Dijkstra e shortest path.
+Empregada para calcular caminhos mais curtos entre os bares.
+
+- **folium**: biblioteca para visualização geoespacial interativa,
+baseada em *Leaflet.js*. Plugins* Fullscreen* e *MeasureControl*
+adicionam tela cheia e ferramenta de medição ao mapa.
+
+- **sklearn.neighbors**: módulo especializado em busca por vizinhos
+próximos. Implementa algoritmo *ball_tree* para consultas eficientes.
+Utilizado para implementar a heurística gulosa do *vizinho mais
+próximo*, resolvendo o **TSP** aberto.
+
+- **matplotlib**: biblioteca fundamental para visualização de dados.
+mcolors converte cores para formato hexadecimal; colormaps fornece
+mapas de cores como 'tab10' para colorir cada trecho da rota.
+
+- **warnings**: módulo da biblioteca padrão para controle de mensagens
+de aviso. Utilizado para suprimir alertas técnicos e manter a
+saída limpa e focada nos resultados.
 
 
 ```python
