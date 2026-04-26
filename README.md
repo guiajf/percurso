@@ -458,8 +458,7 @@ Acesse o mapa interativo: https://guiajf.github.io/percurso/.
 
 **Referências:**
 
-Cormen, T. H. et al. **Introduction to Algorithms**. 4. ed. MIT Press, 2022.
-(Capítulo 34: NP-Completeness)
+Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2022). Introduction to algorithms (4th ed.). MIT Press.
 
 Hagberg, A. A.,  Schult, D. A., Swart, P. J. (2008).  *Exploring network structure, dynamics, and function using NetworkX*, in Proceedings of the 7th Python in Science Conference (SciPy2008), Gäel Varoquaux, Travis Vaught, and Jarrod Millman (Eds), (Pasadena, CA USA), pp. 11–15, Aug 2008.
 
