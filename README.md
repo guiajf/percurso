@@ -7,11 +7,7 @@
 
 ### Introdução
 
-Este projeto aplica conceitos de **Análise de redes** e **Otimização de rotas** para calcular o trajeto mais curto para percorrer os quarenta bares participantes do concurso **Comida di Buteco 2026**, em Juiz de Fora/MG. 
-
-Embora tenha propósito didático, demonstra a aplicação prática do **Problema do Caixeiro Viajante (TSP - Traveling Salesman Problem)**, em sua variante aberta, equivalente ao **Problema do Caminho Hamiltoniano**, em que o viajante visita todos os vérticies exatamente uma vez e não retorna. Já o *TSP clássico* é formalmente definido como a busca por um *ciclo hamiltoniano* de custo mínimo: o viajante visita cada vértice exatamente uma vez e retorna ao ponto de partida.
-
-Ambas as variantes compartilham a mesma classe de complexidade (**NP-difícil**), mas diferem na formulação matemática, nos limites inferiores de custo e nas estratégias de otimização.
+Este projeto aplica conceitos de *Análise de Redes* e *Otimização de Rotas* para determinar o trajeto de menor custo que percorre os quarenta bares participantes do concurso Comida di Buteco 2026, em Juiz de Fora/MG. O problema consiste em visitar todos os vértices exatamente uma vez, sem retorno à origem – caracterizando a variante aberta do **Problema do Caixeiro Viajante** (**TSP**), equivalente ao *Problema do Caminho Hamiltoniano*. O **TSP** clássico, por sua vez, é formalmente definido como a busca por um *ciclo hamiltoniano* de custo mínimo, no qual o viajante retorna ao ponto de partida. Embora ambas as variantes compartilhem a mesma classe de complexidade (**NP-difícil**), elas diferem na formulação matemática, nos limites inferiores de custo e nas estratégias de otimização aplicáveis. À medida que a escala do problema aumenta, o número de rotas possíveis sofre crescimento exponencial, inviabilizando a solução exata em tempo hábil. Diante disso, algoritmos exatos, aproximados e heurísticos são empregados para resolver o **TSP**, conforme o porte da instância.
 
 
 ### Objetivo
