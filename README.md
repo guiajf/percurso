@@ -53,7 +53,7 @@ Fornece implementações de algoritmos como Dijkstra e shortest path.
 Empregada para calcular caminhos mais curtos entre os bares.
 
 - **folium**: biblioteca para visualização geoespacial interativa,
-baseada em *Leaflet.js*. Plugins* Fullscreen* e *MeasureControl*
+baseada em *Leaflet.js*. Plugins *Fullscreen* e *MeasureControl*
 adicionam tela cheia e ferramenta de medição ao mapa.
 
 - **sklearn.neighbors**: módulo especializado em busca por vizinhos
