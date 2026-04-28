@@ -515,8 +515,8 @@ for Traveling Salesman Problems*. Publicado por Cambridge University Press. DOI:
 
 **Fontes:**
 
-NetworkX Documentation: https://networkx.org/documentation/
-OSMnx Documentation: https://osmnx.readthedocs.io/
-Folium Documentation: https://python-visualization.github.io/folium/
+NetworkX Documentation: https://networkx.org/documentation/<br>
+OSMnx Documentation: https://osmnx.readthedocs.io/<br>
+Folium Documentation: https://python-visualization.github.io/folium/<br>
 Traveling Salesman Problem: https://en.wikipedia.org/wiki/Travelling_salesman_problem
 
