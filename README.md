@@ -7,21 +7,13 @@
 
 ### Introdução
 
-Este projeto aplica conceitos de *Análise de Redes* e *Otimização de Rotas* para 
-calcular o trajeto mais curto que percorre os quarenta bares participantes do 
-concurso Comida di Buteco 2026, em Juiz de Fora/MG.
+Esse projeto aplica conceitos de análise de redes e otimização de rotas para calcular o trajeto mais curto que percorre os quarenta bares participantes do concurso *Comida di Buteco* 2026, em Juiz de Fora/MG.
 
-O problema consiste em visitar todos os vértices (bares) exatamente uma vez, 
-sem retorno ao ponto de partida, o que corresponde à variante aberta do 
-**Problema do Caixeiro Viajante** (**TSP**), equivalente ao *Problema do Caminho Hamiltoniano*.
+O problema consiste em visitar todos os vértices (bares) exatamente uma vez, sem retornar ao ponto de partida, o que corresponde à variante aberta do problema do caixeiro viajante (**TSP**), equivalente ao problema do *caminho hamiltoniano*.
 
-Ambas as variantes compartilham a mesma classe de complexidade, explicada em detalhes na seção de cálculo da rota, mas diferem na formulação
-matemática, nos limites inferiores de custo e nas estratégias de otimização.
+Ambas as variantes compartilham a mesma classe de complexidade, explicada em detalhes na seção de cálculo da rota. No entanto, diferem na formulação matemática, nos limites inferiores de custo e nas estratégias de otimização.
 
-À medida que o tamanho do problema aumenta, o número de rotas possíveis 
-cresce drasticamente, tornando a solução exata inviável em curto espaço de tempo. 
-Por isso, algoritmos exatos, aproximados e heurísticos são empregados para 
-resolver o **TSP** conforme a escala da instância.
+À medida que o tamanho do problema aumenta, o número de rotas possíveis cresce drasticamente, tornando inviável a solução exata em um curto espaço de tempo. Por esse motivo, são empregados algoritmos exatos, aproximados e heurísticos para resolver o TSP conforme a escala da instância.
 
 
 ### Objetivo
