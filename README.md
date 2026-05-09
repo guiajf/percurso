@@ -203,32 +203,17 @@ gdf.info()
 
 ### Calculamos a rota mais curta
 
-A classe *NearestNeighbors* do módulo *sklearn.neighbors*, junto com o
-algoritmo *ball_tree*, fornece uma solução robusta para problemas de
-busca por proximidade, como o do roteamento entre pontos geográficos.
+A classe *NearestNeighbors*, do módulo *sklearn.neighbors*, juntamente com o algoritmo *ball_tree*, fornece uma solução compatível para problemas de busca por proximidade, como o de roteamento entre pontos geográficos.
 
-Essa abordagem foi adotada por sua simplicidade e eficiência ao lidar 
-com 40 pontos, apresentando uma complexidade computacional de *O(n²)* 
-que se mostra perfeitamente adequada para essa escala.
+Essa abordagem foi adotada por sua simplicidade e eficiência ao lidar com 40 pontos, apresentando uma complexidade computacional de *O(n²)*, perfeitamente adequada para essa escala.
 
-Embora não assegure uma solução matemática ideal, em razão da 
-classificação do **Problema do Caixeiro Viajante** como **NP-difícil**, 
-o método entrega um resultado prático, rápido e satisfatório para 
-o contexto proposto.
+Embora não assegure uma solução matemática ideal, pois o *Problema do Caixeiro Viajante* é classificado como **NP-difícil**, o método entrega um resultado prático, rápido e satisfatório para o contexto proposto.
 
-O termo "NP-difícil" significa que, para instâncias grandes do problema, 
-não se conhece algoritmo capaz de encontrar a solução exata em tempo 
-polinomial (isto é, em um tempo que cresça de forma gerenciável com o 
-número de cidades). Para encontrar a solução exata, teriam que ser 
-avaliadas todas as *40!* combinações possíveis, equivalente a 
-aproximadamente 8 × 10⁴⁵ rotas (o número 815 seguido de 45 zeros). 
-Mesmo computadores extremamente rápidos levariam um tempo incomensurável para completar essa tarefa.
+O termo "NP-difícil" significa que, para instâncias grandes do problema, não se conhece algoritmo capaz de encontrar a solução exata em tempo polinomial (ou seja, em um tempo que cresça de maneira gerenciável com o número de cidades). Para encontrar a solução exata, seria necessário avaliar todas as 40! combinações possíveis, o que equivale a aproximadamente 8 × 10⁴⁵ rotas (o número 8 seguido de 45 zeros). Mesmo os computadores mais rápidos levariam um tempo incomensurável para completar essa tarefa.
 
-É precisamente por essa inviabilidade computacional que se justifica 
-o uso de heurísticas como a do vizinho mais próximo, que sacrificam 
-a garantia de otimalidade em favor da eficiência prática.
+É precisamente por essa inviabilidade computacional que se justifica o uso de heurísticas, como a do vizinho mais próximo, que sacrificam a garantia de otimalidade em favor da eficiência prática.
 
-Foi definido um ponto de início (Ponto 0 - ADEGA BAR) para que o algoritmo principal (*while*) construa a rota, adicionando o vizinho mais próximo ainda não visitado até atingir o ponto de destino ou visitar todos os pontos.
+Um ponto de início (Ponto 0 - ADEGA BAR) foi definido para que o algoritmo principal construa a rota, adicionando o vizinho mais próximo ainda não visitado até atingir o ponto de destino ou visitar todos os pontos.
 
 A saída mostra a sequência de bares a serem visitados na rota calculada.
 
