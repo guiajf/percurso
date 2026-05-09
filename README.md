@@ -13,7 +13,7 @@ O problema consiste em visitar todos os vértices (bares) exatamente uma vez, se
 
 Ambas as variantes compartilham a mesma classe de complexidade, explicada em detalhes na seção de cálculo da rota. No entanto, diferem na formulação matemática, nos limites inferiores de custo e nas estratégias de otimização.
 
-À medida que o tamanho do problema aumenta, o número de rotas possíveis cresce drasticamente, tornando inviável a solução exata em um curto espaço de tempo. Por esse motivo, são empregados algoritmos exatos, aproximados e heurísticos para resolver o TSP conforme a escala da instância.
+À medida que o tamanho do problema aumenta, o número de rotas possíveis cresce drasticamente, tornando inviável a solução exata em um curto espaço de tempo. Por esse motivo, são empregados algoritmos exatos, aproximados e heurísticos para resolver o **TSP** conforme a escala da instância.
 
 
 ### Objetivo
